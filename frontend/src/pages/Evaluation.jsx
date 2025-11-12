@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const Evaluation = () => {
+  const [modelVersion, setModelVersion] = useState('v1.2');
+  const [dataset, setDataset] = useState('BioPDB');
+
   return (
     <div className="layout-content-container flex flex-col flex-1 gap-8">
       <div className="flex flex-wrap justify-between gap-4 items-start">
@@ -10,22 +13,51 @@ const Evaluation = () => {
         </div>
       </div>
       <div className="flex gap-3 overflow-x-auto pb-2">
-        <button className="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-slate-200 dark:bg-slate-800 px-4">
-          <p className="text-slate-900 dark:text-slate-50 text-sm font-medium leading-normal">Model Version: v1.2</p>
-          <span className="material-symbols-outlined text-slate-500 dark:text-slate-400">expand_more</span>
-        </button>
-        <button className="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-slate-200 dark:bg-slate-800 px-4">
-          <p className="text-slate-900 dark:text-slate-50 text-sm font-medium leading-normal">Dataset: BioPDB</p>
-          <span className="material-symbols-outlined text-slate-500 dark:text-slate-400">expand_more</span>
-        </button>
-        <button className="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-slate-200 dark:bg-slate-800 px-4">
-          <p className="text-slate-900 dark:text-slate-50 text-sm font-medium leading-normal">Date: Latest</p>
-          <span className="material-symbols-outlined text-slate-500 dark:text-slate-400">expand_more</span>
-        </button>
+        <div className="dropdown">
+          <button className="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-slate-200 dark:bg-slate-800 px-4">
+            <p className="text-slate-900 dark:text-slate-50 text-sm font-medium leading-normal">Model Version: {modelVersion}</p>
+            <span className="material-symbols-outlined text-slate-500 dark:text-slate-400">expand_more</span>
+          </button>
+          <div className="dropdown-content">
+            <a href="#" onClick={() => setModelVersion('v1.2')}>v1.2</a>
+            <a href="#" onClick={() => setModelVersion('v1.1')}>v1.1</a>
+            <a href="#" onClick={() => setModelVersion('v1.0')}>v1.0</a>
+          </div>
+        </div>
+        <div className="dropdown">
+          <button className="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-slate-200 dark:bg-slate-800 px-4">
+            <p className="text-slate-900 dark:text-slate-50 text-sm font-medium leading-normal">Dataset: {dataset}</p>
+            <span className="material-symbols-outlined text-slate-500 dark:text-slate-400">expand_more</span>
+          </button>
+          <div className="dropdown-content">
+            <a href="#" onClick={() => setDataset('BioPDB')}>BioPDB</a>
+            <a href="#" onClick={() => setDataset('Custom Dataset Alpha')}>Custom Dataset Alpha</a>
+            <a href="#" onClick={() => setDataset('PeptideNet Benchmark')}>PeptideNet Benchmark</a>
+          </div>
+        </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {/* ... (Metric cards from HTML) ... */}
-      </div>
+        <div className="flex flex-col gap-2 rounded-xl p-6 border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/70 backdrop-blur-sm">
+            <p className="text-slate-700 dark:text-slate-300 text-base font-medium leading-normal">Overall Validity</p>
+            <p className="text-slate-900 dark:text-slate-50 tracking-tight text-3xl font-bold leading-tight">98.2%</p>
+            <p className="text-green-600 dark:text-green-500 text-sm font-medium leading-normal">+1.5%</p>
+        </div>
+        <div className="flex flex-col gap-2 rounded-xl p-6 border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/70 backdrop-blur-sm">
+            <p className="text-slate-700 dark:text-slate-300 text-base font-medium leading-normal">Average Stability</p>
+            <p className="text-slate-900 dark:text-slate-50 tracking-tight text-3xl font-bold leading-tight">0.91</p>
+            <p className="text-green-600 dark:text-green-500 text-sm font-medium leading-normal">+0.02</p>
+        </div>
+        <div className="flex flex-col gap-2 rounded-xl p-6 border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/70 backdrop-blur-sm">
+            <p className="text-slate-700 dark:text-slate-300 text-base font-medium leading-normal">Uniqueness</p>
+            <p className="text-slate-900 dark:text-slate-50 tracking-tight text-3xl font-bold leading-tight">99.7%</p>
+            <p className="text-red-600 dark:text-red-500 text-sm font-medium leading-normal">-0.1%</p>
+        </div>
+        <div className="flex flex-col gap-2 rounded-xl p-6 border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/70 backdrop-blur-sm">
+            <p className="text-slate-700 dark:text-slate-300 text-base font-medium leading-normal">Diversity Score</p>
+            <p className="text-slate-900 dark:text-slate-50 tracking-tight text-3xl font-bold leading-tight">0.85</p>
+            <p className="text-green-600 dark:text-green-500 text-sm font-medium leading-normal">+0.04</p>
+        </div>
+    </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div className="flex flex-col gap-4 rounded-xl border border-slate-200 dark:border-slate-800 p-6 bg-white/70 dark:bg-slate-900/70 backdrop-blur-sm">
           {/* ... (Performance Metrics chart) ... */}

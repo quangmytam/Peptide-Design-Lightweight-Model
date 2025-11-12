@@ -52,7 +52,10 @@ const Training = () => {
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
       {/* Left Column: Configuration */}
       <div className="lg:col-span-1 flex flex-col gap-6">
-        {/* ... (Configuration panel from HTML) ... */}
+         <div className="glass-card rounded-xl shadow-card p-6">
+            <h2 className="text-xl font-bold tracking-tight mb-5">Model Configuration</h2>
+            {/* ... form content from the HTML design ... */}
+         </div>
         <div className="flex gap-3">
           <button onClick={handleStart} disabled={isTraining} className="flex-1 flex items-center justify-center gap-2 rounded-lg h-12 bg-primary text-white text-base font-bold tracking-wide hover:bg-primary/90 transition-colors disabled:opacity-50">
             <span className="material-symbols-outlined">play_arrow</span>
