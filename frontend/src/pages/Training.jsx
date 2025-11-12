@@ -54,7 +54,47 @@ const Training = () => {
       <div className="lg:col-span-1 flex flex-col gap-6">
          <div className="glass-card rounded-xl shadow-card p-6">
             <h2 className="text-xl font-bold tracking-tight mb-5">Model Configuration</h2>
-            {/* ... form content from the HTML design ... */}
+            <div className="flex flex-col gap-4">
+              <label className="flex flex-col">
+                <p className="text-base font-medium pb-2">Model Architecture</p>
+                <div className="relative">
+                  <select className="form-input w-full resize-none overflow-hidden rounded-lg text-text-light dark:text-text-dark focus:outline-none focus:ring-2 focus:ring-primary/50 border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark h-12 p-3 text-base font-normal bg-no-repeat bg-right-3" style={{backgroundImage: 'url(\'data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2724px%27 height=%2724px%27 fill=%27%239ca3af%27 viewBox=%270 0 256 256%27%3e%3cpath d=%27M215.39 92.94a8 8 0 00-11.31 0L128 169.37 51.92 93.3a8 8 0 00-11.32 11.31l82.05 82.06a8 8 0 0011.32 0l81.42-81.42a8 8 0 000-11.31z%27%3e%3c/path%3e%3c/svg%3e\')'}}>
+                    <option>Lightweight GTr</option>
+                    <option>GATv2</option>
+                    <option>Transformer-M</option>
+                  </select>
+                </div>
+              </label>
+              <label className="flex flex-col">
+                <p className="text-base font-medium pb-2">Dataset</p>
+                <div className="relative">
+                  <select className="form-input w-full resize-none overflow-hidden rounded-lg text-text-light dark:text-text-dark focus:outline-none focus:ring-2 focus:ring-primary/50 border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark h-12 p-3 text-base font-normal bg-no-repeat bg-right-3" style={{backgroundImage: 'url(\'data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2724px%27 height=%2724px%27 fill=%27%239ca3af%27 viewBox=%270 0 256 256%27%3e%3cpath d=%27M215.39 92.94a8 8 0 00-11.31 0L128 169.37 51.92 93.3a8 8 0 00-11.32 11.31l82.05 82.06a8 8 0 0011.32 0l81.42-81.42a8 8 0 000-11.31z%27%3e%3c/path%3e%3c/svg%3e\')'}}>
+                    <option>BioPDB v1.2</option>
+                    <option>Custom Dataset Alpha</option>
+                    <option>PeptideNet Benchmark</option>
+                  </select>
+                </div>
+              </label>
+            </div>
+            <div className="border-t border-border-light dark:border-border-dark my-6"></div>
+            <h3 className="text-base font-semibold mb-4">Hyperparameters</h3>
+            <div className="grid grid-cols-2 gap-4">
+                <label className="flex flex-col col-span-1">
+                    <p className="text-sm font-medium pb-2">Learning Rate</p>
+                    <input className="form-input w-full rounded-lg text-text-light dark:text-text-dark focus:outline-none focus:ring-2 focus:ring-primary/50 border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark h-12 p-3 text-base" type="text" value="0.001"/>
+                </label>
+                <label className="flex flex-col col-span-1">
+                    <p className="text-sm font-medium pb-2">Batch Size</p>
+                    <input className="form-input w-full rounded-lg text-text-light dark:text-text-dark focus:outline-none focus:ring-2 focus:ring-primary/50 border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark h-12 p-3 text-base" type="number" value="64"/>
+                </label>
+                <label className="flex flex-col col-span-2">
+                    <div className="flex justify-between items-center pb-2">
+                        <p className="text-sm font-medium">Epochs</p>
+                        <span className="text-sm font-semibold text-primary">100</span>
+                    </div>
+                    <input className="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer range-sm accent-primary" max="500" min="10" type="range" value="100"/>
+                </label>
+            </div>
          </div>
         <div className="flex gap-3">
           <button onClick={handleStart} disabled={isTraining} className="flex-1 flex items-center justify-center gap-2 rounded-lg h-12 bg-primary text-white text-base font-bold tracking-wide hover:bg-primary/90 transition-colors disabled:opacity-50">

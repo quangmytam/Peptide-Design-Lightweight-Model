@@ -9,7 +9,7 @@ import Datasets from './pages/Datasets';
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/LightGNN-Peptide">
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />

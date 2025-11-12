@@ -22,7 +22,30 @@ const Generation = () => {
         </div>
         <div className="space-y-6">
           <h2 className="text-xl font-bold tracking-[-0.015em] border-b border-border-light dark:border-border-dark pb-3">Generation Parameters</h2>
-          {/* ... (form elements from the HTML design) ... */}
+          <label className="flex flex-col w-full">
+            <p className="text-sm font-medium leading-normal pb-2">Target Protein ID</p>
+            <input className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-text-light dark:text-text-dark focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-border-light dark:border-border-dark bg-white dark:bg-background-dark/50 h-12 placeholder:text-subtext-light dark:placeholder:text-subtext-dark p-3 text-base font-normal leading-normal" placeholder="e.g., PDB:1A2B" value=""/>
+          </label>
+          <label className="flex flex-col w-full">
+            <p className="text-sm font-medium leading-normal pb-2">Desired Peptide Length</p>
+            <input className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-text-light dark:text-text-dark focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-border-light dark:border-border-dark bg-white dark:bg-background-dark/50 h-12 placeholder:text-subtext-light dark:placeholder:text-subtext-dark p-3 text-base font-normal leading-normal" placeholder="e.g., 10" type="number" value=""/>
+          </label>
+          <label className="flex flex-col w-full">
+            <p className="text-sm font-medium leading-normal pb-2">Graph Transformer Model</p>
+            <select className="form-select flex w-full min-w-0 flex-1 overflow-hidden rounded-lg text-text-light dark:text-text-dark focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-border-light dark:border-border-dark bg-white dark:bg-background-dark/50 h-12 p-3 text-base font-normal leading-normal">
+              <option>LightGNN-v2 (Recommended)</option>
+              <option>LightGNN-v1</option>
+              <option>Transformer-XL</option>
+            </select>
+          </label>
+          <label className="flex flex-col w-full">
+            <p className="text-sm font-medium leading-normal pb-2">BioPDB Dataset Version</p>
+            <select className="form-select flex w-full min-w-0 flex-1 overflow-hidden rounded-lg text-text-light dark:text-text-dark focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-border-light dark:border-border-dark bg-white dark:bg-background-dark/50 h-12 p-3 text-base font-normal leading-normal">
+              <option>BioPDB 2024-Q2</option>
+              <option>BioPDB 2024-Q1</option>
+              <option>BioPDB 2023-Q4</option>
+            </select>
+          </label>
           <div className="pt-4 border-t border-border-light dark:border-border-dark">
             <button
               onClick={handleGenerate}
