@@ -1,13 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Header from '../components/Header';
 
 const Evaluation = () => {
+  const [filters, setFilters] = useState({
+    modelVersion: 0,
+    dataset: 0,
+    date: 0,
+  });
+
+  const modelVersions = ['v1.2', 'v1.1', 'v1.0'];
+  const datasets = ['BioPDB', 'Custom Alpha', 'PeptideNet'];
+  const dates = ['Latest', 'Last 7 Days', 'Last 30 Days'];
+
+  const handleFilterClick = (filterName) => {
+    setFilters((prev) => ({
+      ...prev,
+      [filterName]: (prev[filterName] + 1) % (
+        filterName === 'modelVersion' ? modelVersions.length :
+        filterName === 'dataset' ? datasets.length : dates.length
+      ),
+    }));
+  };
+
   const navLinks = [
-    { to: '/dashboard', label: 'Dashboard' },
+    { to: '/', label: 'Home' },
     { to: '/evaluation', label: 'Evaluation' },
     { to: '/datasets', label: 'Datasets' },
-    { to: '/models', label: 'Models' },
+    { to: '/documentation', label: 'Documentation' },
+    { to: '/about', label: 'About' },
   ];
 
   return (
@@ -54,25 +75,28 @@ const Evaluation = () => {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={() => handleFilterClick('modelVersion')}
                 className="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-slate-200 dark:bg-slate-800 px-4"
               >
-                <p className="text-slate-900 dark:text-slate-50 text-sm font-medium leading-normal">Model Version: v1.2</p>
+                <p className="text-slate-900 dark:text-slate-50 text-sm font-medium leading-normal">Model Version: {modelVersions[filters.modelVersion]}</p>
                 <span className="material-symbols-outlined text-slate-500 dark:text-slate-400">expand_more</span>
               </motion.button>
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={() => handleFilterClick('dataset')}
                 className="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-slate-200 dark:bg-slate-800 px-4"
               >
-                <p className="text-slate-900 dark:text-slate-50 text-sm font-medium leading-normal">Dataset: BioPDB</p>
+                <p className="text-slate-900 dark:text-slate-50 text-sm font-medium leading-normal">Dataset: {datasets[filters.dataset]}</p>
                 <span className="material-symbols-outlined text-slate-500 dark:text-slate-400">expand_more</span>
               </motion.button>
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={() => handleFilterClick('date')}
                 className="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-slate-200 dark:bg-slate-800 px-4"
               >
-                <p className="text-slate-900 dark:text-slate-50 text-sm font-medium leading-normal">Date: Latest</p>
+                <p className="text-slate-900 dark:text-slate-50 text-sm font-medium leading-normal">Date: {dates[filters.date]}</p>
                 <span className="material-symbols-outlined text-slate-500 dark:text-slate-400">expand_more</span>
               </motion.button>
             </div>

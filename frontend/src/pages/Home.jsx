@@ -1,13 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import ScrollAnimation from '../components/ScrollAnimation';
 import Header from '../components/Header';
 
 const Home = () => {
+  const navigate = useNavigate();
   const navLinks = [
     { to: '/', label: 'Home' },
-    { to: '/docs', label: 'Documentation' },
-    { to: '/publications', label: 'Publications' },
+    { to: '/documentation', label: 'Documentation' },
     { to: '/about', label: 'About' },
   ];
 
@@ -37,6 +38,7 @@ const Home = () => {
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
+                    onClick={() => navigate('/generation')}
                     className="flex min-w-[84px] cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-12 px-6 bg-primary text-white text-base font-bold shadow-soft transition-transform duration-200"
                   >
                     <span className="material-symbols-outlined">science</span>
