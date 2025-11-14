@@ -44,7 +44,6 @@ const Header = ({ title, navLinks }) => {
             {theme === 'light' ? 'dark_mode' : 'light_mode'}
           </span>
         </button>
-        {children}
       </div>
     </header>
   );
