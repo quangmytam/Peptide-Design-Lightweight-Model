@@ -24,9 +24,10 @@ const Evaluation = () => {
   };
 
   const navLinks = [
-    { to: '/', label: 'Home' },
-    { to: '/evaluation', label: 'Evaluation' },
     { to: '/datasets', label: 'Datasets' },
+    { to: '/training', label: 'Training' },
+    { to: '/generation', label: 'Generation' },
+    { to: '/evaluation', label: 'Evaluation' },
     { to: '/documentation', label: 'Documentation' },
     { to: '/about', label: 'About' },
   ];
@@ -34,7 +35,15 @@ const Evaluation = () => {
   return (
     <div className="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
       <div className="layout-container flex h-full grow flex-col">
-        <Header title="LightGNN-Peptide" navLinks={navLinks} />
+        <Header title="LightGNN-Peptide" navLinks={navLinks}>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[-0.015em]"
+          >
+            <span className="truncate">Export Report</span>
+          </motion.button>
+        </Header>
         <motion.main
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
