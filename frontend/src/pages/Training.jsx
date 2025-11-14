@@ -1,8 +1,52 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import Header from '../components/Header';
 
 const Training = () => {
+  const [epochs, setEpochs] = useState(100);
+  const [currentEpoch, setCurrentEpoch] = useState(0);
+  const [progress, setProgress] = useState(0);
+  const [status, setStatus] = useState('Idle');
+  const [logs, setLogs] = useState([]);
+  const trainingInterval = useRef(null);
+
+  const startTraining = () => {
+    setStatus('Training...');
+    setLogs(['[INFO] Initializing LightGNN-Peptide model...', '[INFO] Loading dataset: BioPDB v1.2.', '[INFO] Found 15,789 peptide structures.']);
+    trainingInterval.current = setInterval(() => {
+      setCurrentEpoch((prev) => {
+        if (prev < epochs) {
+          const newEpoch = prev + 1;
+          setProgress((newEpoch / epochs) * 100);
+          setLogs((prevLogs) => [...prevLogs, `[TRAIN] Epoch ${newEpoch}/${epochs} - Loss: ${Math.random().toFixed(3)}, Val Acc: ${(Math.random() * 10 + 80).toFixed(2)}%`]);
+          return newEpoch;
+        }
+        stopTraining('Completed');
+        return prev;
+      });
+    }, 1000);
+  };
+
+  const pauseTraining = () => {
+    if (status === 'Training...') {
+      setStatus('Paused');
+      clearInterval(trainingInterval.current);
+    } else if (status === 'Paused') {
+      startTraining();
+    }
+  };
+
+  const stopTraining = (finalStatus = 'Stopped') => {
+    setStatus(finalStatus);
+    clearInterval(trainingInterval.current);
+    setCurrentEpoch(0);
+    setProgress(0);
+  };
+
+  useEffect(() => {
+    return () => clearInterval(trainingInterval.current);
+  }, []);
+
   return (
     <div className="relative flex h-auto min-h-screen w-full flex-col">
       <Header title="LightGNN-Peptide">
@@ -81,9 +125,16 @@ const Training = () => {
                   <label className="flex flex-col col-span-2">
                     <div className="flex justify-between items-center pb-2">
                       <p className="text-sm font-medium">Epochs</p>
-                      <span className="text-sm font-semibold text-primary">100</span>
+                      <span className="text-sm font-semibold text-primary">{epochs}</span>
                     </div>
-                    <input className="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer range-sm accent-primary" max="500" min="10" type="range" defaultValue="100" />
+                    <input
+                      className="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer range-sm accent-primary"
+                      max="500"
+                      min="10"
+                      type="range"
+                      value={epochs}
+                      onChange={(e) => setEpochs(parseInt(e.target.value))}
+                    />
                   </label>
                 </div>
                 {/* Advanced Options */}
@@ -101,6 +152,8 @@ const Training = () => {
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
+                    onClick={startTraining}
+                    disabled={status === 'Training...'}
                     className="flex-1 flex items-center justify-center gap-2 rounded-lg h-12 bg-primary text-white text-base font-bold tracking-wide hover:bg-primary/90 transition-colors"
                   >
                     <span className="material-symbols-outlined">play_arrow</span>
@@ -109,6 +162,10 @@ const Training = () => {
                   <motion.button
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
+                    onClick={() => {
+                      stopTraining();
+                      setLogs([]);
+                    }}
                     className="flex items-center justify-center rounded-lg h-12 w-12 bg-slate-200 dark:bg-slate-700 text-text-light dark:text-text-dark hover:bg-slate-300 dark:hover:bg-slate-600 transition-colors"
                   >
                     <span className="material-symbols-outlined">refresh</span>
@@ -129,26 +186,41 @@ const Training = () => {
                     <div className="relative inline-flex items-center justify-center size-12">
                       <svg className="size-full" height="36" viewBox="0 0 36 36" width="36" xmlns="http://www.w3.org/2000/svg">
                         <circle className="stroke-current text-slate-200 dark:text-slate-700" cx="18" cy="18" fill="none" r="16" strokeWidth="3"></circle>
-                        <circle className="stroke-current text-primary" cx="18" cy="18" fill="none" r="16" strokeDasharray="100" strokeDashoffset="65" strokeLinecap="round" strokeWidth="3"></circle>
+                        <circle
+                          className="stroke-current text-primary"
+                          cx="18"
+                          cy="18"
+                          fill="none"
+                          r="16"
+                          strokeDasharray="100"
+                          strokeDashoffset={100 - progress}
+                          strokeLinecap="round"
+                          strokeWidth="3"
+                        ></circle>
                       </svg>
-                      <span className="absolute text-sm font-semibold">35%</span>
+                      <span className="absolute text-sm font-semibold">{`${Math.round(progress)}%`}</span>
                     </div>
                     <div>
-                      <p className="font-semibold">Epoch 35/100</p>
-                      <p className="text-sm text-text-light/70 dark:text-text-dark/70">Status: Training...</p>
+                      <p className="font-semibold">{`Epoch ${currentEpoch}/${epochs}`}</p>
+                      <p className="text-sm text-text-light/70 dark:text-text-dark/70">{`Status: ${status}`}</p>
                     </div>
                   </div>
                   <div className="flex gap-2">
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
+                      onClick={pauseTraining}
+                      disabled={status !== 'Training...' && status !== 'Paused'}
                       className="flex items-center justify-center gap-2 rounded-lg h-10 px-4 bg-primary/20 dark:bg-primary/30 text-primary text-sm font-bold hover:bg-primary/30 dark:hover:bg-primary/40 transition-colors"
                     >
-                      <span className="material-symbols-outlined text-base">pause</span> Pause
+                      <span className="material-symbols-outlined text-base">{status === 'Training...' ? 'pause' : 'play_arrow'}</span>
+                      {status === 'Training...' ? 'Pause' : 'Resume'}
                     </motion.button>
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
+                      onClick={() => stopTraining()}
+                      disabled={status === 'Idle' || status === 'Completed'}
                       className="flex items-center justify-center gap-2 rounded-lg h-10 px-4 bg-red-500/20 text-red-500 text-sm font-bold hover:bg-red-500/30 transition-colors"
                     >
                       <span className="material-symbols-outlined text-base">stop</span> Stop
@@ -201,16 +273,9 @@ const Training = () => {
                   <h2 className="text-xl font-bold tracking-tight">Console Log</h2>
                 </div>
                 <div className="p-6 bg-surface-dark/40 dark:bg-background-dark/80 rounded-b-xl h-64 overflow-y-auto">
-                  <pre className="text-sm font-mono text-text-light/90 dark:text-text-dark/90 whitespace-pre-wrap"><code className="language-bash">{`[INFO] Initializing LightGNN-Peptide model...
-[INFO] Loading dataset: BioPDB v1.2.
-[INFO] Found 15,789 peptide structures.
-[TRAIN] Epoch 1/100 - Loss: 0.892, Val Acc: 78.3%
-[TRAIN] Epoch 2/100 - Loss: 0.715, Val Acc: 82.1%
-[TRAIN] Epoch 3/100 - Loss: 0.603, Val Acc: 84.5%
-...
-[TRAIN] Epoch 34/100 - Loss: 0.189, Val Acc: 92.3%
-[TRAIN] Epoch 35/100 - Loss: 0.183, Val Acc: 92.4%
-`}</code></pre>
+                  <pre className="text-sm font-mono text-text-light/90 dark:text-text-dark/90 whitespace-pre-wrap">
+                    <code className="language-bash">{logs.join('\n')}</code>
+                  </pre>
                 </div>
               </motion.div>
             </div>
