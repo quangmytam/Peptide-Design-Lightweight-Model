@@ -7,14 +7,10 @@ import Header from '../components/Header';
 const Home = () => {
   const navigate = useNavigate();
   const navLinks = [
-    { to: '/', label: 'Home' },
-<<<<<<< HEAD
-=======
     { to: '/datasets', label: 'Datasets' },
     { to: '/evaluation', label: 'Evaluation' },
     { to: '/training', label: 'Training' },
-    { to: 'generation', label: 'Generation' },
->>>>>>> b10b01c (links pages correctly)
+    { to: '/generation', label: 'Generation' },
     { to: '/documentation', label: 'Documentation' },
     { to: '/about', label: 'About' },
   ];

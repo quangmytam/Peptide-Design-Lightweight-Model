@@ -24,22 +24,17 @@ const Generation = () => {
   };
 
   const navLinks = [
-<<<<<<< HEAD
-    { to: '/', label: 'Home' },
-    { to: '/generation', label: 'Generation' },
-    { to: '/documentation', label: 'Documentation' },
-    { to: '/about', label: 'About' },
-=======
     { to: '/datasets', label: 'Datasets' },
     { to: '/training', label: 'Training' },
     { to: '/evaluation', label: 'Evaluation' },
     { to: '/documentation', label: 'Documentation' },
->>>>>>> b10b01c (links pages correctly)
+    { to: '/about', label: 'About' },
   ];
 
   return (
     <div className="relative flex h-auto min-h-screen w-full flex-col">
-      <Header title="LightGNN-Peptide" navLinks={navLinks} />
+      <Header title="LightGNN-Peptide" navLinks={navLinks}>
+      </Header>
       <motion.main
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

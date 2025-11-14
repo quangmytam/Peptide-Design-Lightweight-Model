@@ -38,7 +38,6 @@ const Datasets = () => {
   };
 
   const navLinks = [
-    { to: '/', label: 'Home' },
     { to: '/datasets', label: 'Datasets' },
     { to: '/generation', label: 'Generation' },
     { to: '/evaluation', label: 'Evaluation' },
@@ -75,7 +74,8 @@ const Datasets = () => {
 
   return (
     <div className="relative flex h-auto min-h-screen w-full flex-col">
-      <Header title="LightGNN-Peptide" navLinks={navLinks} />
+      <Header title="LightGNN-Peptide" navLinks={navLinks}>
+      </Header>
       <motion.main
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
