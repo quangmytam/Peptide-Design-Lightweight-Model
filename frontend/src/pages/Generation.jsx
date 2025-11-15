@@ -24,8 +24,10 @@ const Generation = () => {
   };
 
   const navLinks = [
-    { to: '/', label: 'Home' },
+    { to: '/datasets', label: 'Datasets' },
+    { to: '/training', label: 'Training' },
     { to: '/generation', label: 'Generation' },
+    { to: '/evaluation', label: 'Evaluation' },
     { to: '/documentation', label: 'Documentation' },
     { to: '/about', label: 'About' },
   ];
