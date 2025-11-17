@@ -9,6 +9,7 @@ const Button = ({ children, onClick, disabled, variant = 'primary', className = 
     icon: 'w-12 bg-slate-200 dark:bg-slate-700 text-text-light dark:text-text-dark hover:bg-slate-300 dark:hover:bg-slate-600',
     secondary: 'h-10 px-4 bg-primary/20 dark:bg-primary/30 text-primary text-sm font-bold hover:bg-primary/30 dark:hover:bg-primary/40',
     destructive: 'h-10 px-4 bg-red-500/20 text-red-500 text-sm font-bold hover:bg-red-500/30',
+    small: 'h-10 px-2 bg-primary text-white text-sm font-medium hover:bg-primary/90',
   };
 
   const combinedClasses = `${baseClasses} ${variants[variant]} ${className}`;

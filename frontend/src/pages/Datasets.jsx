@@ -83,7 +83,7 @@ const Datasets = () => {
             <Card className="p-6 flex-col flex">
               <div className="flex justify-between items-center mb-4">
                 <h2 className="text-[#0d141b] dark:text-white text-xl font-bold leading-tight tracking-[-0.015em]">Analysis & Visualization</h2>
-                <Button className="h-10 px-4">
+                <Button variant="small" className="h-10 px-4" /*onClick={() => alert('Processing dataset...')*/>
                   <span className="material-symbols-outlined text-lg">play_arrow</span>
                   Process Dataset
                 </Button>

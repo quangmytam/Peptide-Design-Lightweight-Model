@@ -7,9 +7,11 @@ const Header = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
 
   const navLinks = [
-    { to: '/', label: 'Home' },
+    { to: '/datasets', label: 'Datasets' },
+    { to: '/training', label: 'Training' },
+    { to: '/generation', label: 'Generation' },
+    { to: '/evaluation', label: 'Evaluation' },
     { to: '/documentation', label: 'Documentation' },
-    { to: '/publications', label: 'Publications' },
     { to: '/about', label: 'About' },
   ];
 
