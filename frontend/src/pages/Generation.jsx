@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Header from '../components/Header';
 import TextInput from '../components/TextInput';
 import SelectInput from '../components/SelectInput';
 import Button from '../components/Button';
@@ -27,11 +26,9 @@ const Generation = () => {
   };
 
   return (
-    <div className="flex w-full max-w-6xl flex-col">
-      <Header />
-      <main className="flex-grow py-12 md:py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 w-full">
-          {/* Left Column: Control Panel */}
+    <>
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 w-full">
+        {/* Left Column: Control Panel */}
           <aside className="lg:col-span-4 xl:col-span-3 flex flex-col gap-8">
             <div className="flex flex-col gap-2">
               <h1 className="text-4xl font-black tracking-[-0.033em]">Peptide Generation</h1>
@@ -90,17 +87,7 @@ const Generation = () => {
             </div>
           </section>
         </div>
-      </main>
-      <footer className="mt-auto border-t border-slate-900/10 pt-8 pb-4 dark:border-slate-50/10">
-        <div className="flex flex-col items-center justify-between gap-4 text-sm text-slate-500 dark:text-slate-400 sm:flex-row">
-          <p>© 2024 AI Lab, University of Science. All rights reserved.</p>
-          <div className="flex items-center gap-4">
-            <a className="hover:text-primary" href="#">Contact</a>
-            <a className="hover:text-primary" href="#">Privacy Policy</a>
-          </div>
-        </div>
-      </footer>
-    </div>
+    </>
   );
 };
 

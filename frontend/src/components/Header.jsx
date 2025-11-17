@@ -1,16 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { NavLink, Link } from 'react-router-dom';
+import { ThemeContext } from '../contexts/ThemeContext';
+import Button from './Button';
 
 const Header = () => {
+  const { theme, toggleTheme } = useContext(ThemeContext);
+
   const navLinks = [
     { to: '/', label: 'Home' },
-    { to: '/docs', label: 'Documentation' },
+    { to: '/documentation', label: 'Documentation' },
     { to: '/publications', label: 'Publications' },
     { to: '/about', label: 'About' },
   ];
 
   return (
-    <header className="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-slate-900/10 dark:border-slate-50/10 px-4 py-4 md:px-6 bg-card-light/80 dark:bg-card-dark/80 backdrop-blur-xl">
+    <header className="flex items-center justify-between whitespace-nowrap border-b border-slate-900/10 dark:border-slate-50/10 px-4 py-4 md:px-6">
       <Link to="/" className="flex items-center gap-3">
         <div className="text-primary size-7">
           <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
@@ -28,13 +32,18 @@ const Header = () => {
             className={({ isActive }) =>
               isActive
                 ? 'text-sm font-medium text-primary hover:opacity-80'
-                : 'text-sm font-medium hover:text-primary dark:hover:text-primary'
+                : 'text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary'
             }
           >
             {link.label}
           </NavLink>
         ))}
       </nav>
+      <Button onClick={toggleTheme} variant="icon" className="w-10 h-10">
+        <span className="material-symbols-outlined">
+          {theme === 'dark' ? 'light_mode' : 'dark_mode'}
+        </span>
+      </Button>
     </header>
   );
 };

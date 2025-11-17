@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import Header from '../components/Header';
 import Card from '../components/Card';
 import PageTitle from '../components/PageTitle';
 import SelectInput from '../components/SelectInput';
@@ -63,11 +62,9 @@ const Training = () => {
   }, []);
 
   return (
-    <div className="flex w-full max-w-6xl flex-col">
-      <Header />
-      <main className="flex-grow py-12 md:py-20">
-        <div className="max-w-7xl mx-auto">
-          <PageTitle>Model Training Dashboard</PageTitle>
+    <>
+      <div className="max-w-7xl mx-auto">
+        <PageTitle>Model Training Dashboard</PageTitle>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <div className="lg:col-span-1 flex flex-col gap-6">
               <Card>
@@ -181,17 +178,7 @@ const Training = () => {
             </div>
           </div>
         </div>
-      </main>
-      <footer className="mt-auto border-t border-slate-900/10 pt-8 pb-4 dark:border-slate-50/10">
-        <div className="flex flex-col items-center justify-between gap-4 text-sm text-slate-500 dark:text-slate-400 sm:flex-row">
-          <p>© 2024 AI Lab, University of Science. All rights reserved.</p>
-          <div className="flex items-center gap-4">
-            <a className="hover:text-primary" href="#">Contact</a>
-            <a className="hover:text-primary" href="#">Privacy Policy</a>
-          </div>
-        </div>
-      </footer>
-    </div>
+    </>
   );
 };
 

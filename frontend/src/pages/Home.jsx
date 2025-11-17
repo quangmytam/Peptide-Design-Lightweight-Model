@@ -1,6 +1,5 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import Header from '../components/Header';
 import ScrollAnimation from '../components/ScrollAnimation';
 import Button from '../components/Button';
 import Card from '../components/Card';
@@ -10,11 +9,9 @@ const Home = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="flex w-full max-w-6xl flex-col">
-      <Header />
-      <main className="flex-grow py-12 md:py-20">
-        {/* HeroSection */}
-        <section className="text-center">
+    <>
+      {/* HeroSection */}
+      <section className="text-center">
           <div className="mx-auto max-w-3xl">
             <h1 className="text-4xl font-black tracking-tighter sm:text-5xl md:text-6xl text-text-light dark:text-text-dark">LightGNN-Peptide</h1>
             <p className="mt-4 text-base text-slate-600 dark:text-slate-400 sm:text-lg md:text-xl">Stable Short Peptide Generation with Lightweight Graph Transformers</p>
@@ -81,18 +78,7 @@ const Home = () => {
             </div>
           </section>
         </ScrollAnimation>
-      </main>
-      {/* Footer */}
-      <footer className="mt-auto border-t border-slate-900/10 pt-8 pb-4 dark:border-slate-50/10">
-        <div className="flex flex-col items-center justify-between gap-4 text-sm text-slate-500 dark:text-slate-400 sm:flex-row">
-          <p>© 2024 AI Lab, University of Science. All rights reserved.</p>
-          <div className="flex items-center gap-4">
-            <a className="hover:text-primary" href="#">Contact</a>
-            <a className="hover:text-primary" href="#">Privacy Policy</a>
-          </div>
-        </div>
-      </footer>
-    </div>
+    </>
   );
 };
 
