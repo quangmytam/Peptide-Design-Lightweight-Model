@@ -1,10 +1,12 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import Header from './Header';
 
 const PageLayout = () => {
   return (
     <div className="relative flex h-auto min-h-screen w-full flex-col">
+      <Header />
       {/* Background Gradient */}
       <div className="absolute top-0 left-0 -z-10 h-full w-full">
         <div className="absolute top-0 left-0 h-1/2 w-1/2 rounded-full bg-primary/10 blur-[100px] dark:bg-primary/20"></div>

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Header from '../components/Header';
 import Button from '../components/Button';
 import Card from '../components/Card';
 import MetricCard from '../components/MetricCard';
@@ -34,11 +33,9 @@ const Evaluation = () => {
   ];
 
   return (
-    <div className="flex w-full max-w-6xl flex-col">
-      <Header />
-      <main className="flex-grow py-12 md:py-20">
-        <div className="layout-content-container flex flex-col flex-1 gap-8">
-          <div className="flex flex-wrap justify-between gap-4 items-start">
+    <>
+      <div className="layout-content-container flex flex-col flex-1 gap-8">
+        <div className="flex flex-wrap justify-between gap-4 items-start">
             <div className="flex min-w-72 flex-col gap-2">
               <p className="text-slate-900 dark:text-slate-50 text-4xl font-black leading-tight tracking-[-0.033em]">LightGNN-Peptide: Model Evaluation</p>
               <p className="text-slate-500 dark:text-slate-400 text-base font-normal leading-normal">Performance metrics for the peptide generation model trained on the BioPDB dataset.</p>
@@ -143,17 +140,7 @@ const Evaluation = () => {
             </Card>
           </div>
         </div>
-      </main>
-      <footer className="mt-auto border-t border-slate-900/10 pt-8 pb-4 dark:border-slate-50/10">
-        <div className="flex flex-col items-center justify-between gap-4 text-sm text-slate-500 dark:text-slate-400 sm:flex-row">
-          <p>© 2024 AI Lab, University of Science. All rights reserved.</p>
-          <div className="flex items-center gap-4">
-            <a className="hover:text-primary" href="#">Contact</a>
-            <a className="hover:text-primary" href="#">Privacy Policy</a>
-          </div>
-        </div>
-      </footer>
-    </div>
+    </>
   );
 };
 
