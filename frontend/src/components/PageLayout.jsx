@@ -1,8 +1,8 @@
 import React from 'react';
+import { Outlet } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import Header from './Header';
 
-const PageLayout = ({ children }) => {
+const PageLayout = () => {
   return (
     <div className="relative flex h-auto min-h-screen w-full flex-col">
       {/* Background Gradient */}
@@ -18,9 +18,8 @@ const PageLayout = ({ children }) => {
         className="flex flex-1 justify-center px-4 py-5 sm:px-8 md:px-16 lg:px-24"
       >
         <div className="flex w-full max-w-6xl flex-col">
-          <Header />
           <main className="flex-grow py-12 md:py-20">
-            {children}
+            <Outlet />
           </main>
           {/* Footer */}
           <footer className="mt-auto border-t border-slate-900/10 pt-8 pb-4 dark:border-slate-50/10">
