@@ -7,22 +7,25 @@ import PeptideResultCard from '../components/PeptideResultCard';
 const Generation = () => {
   const [isGenerating, setIsGenerating] = useState(false);
   const [generatedPeptides, setGeneratedPeptides] = useState([]);
+  const [length, setLength] = useState(10);
+  const [useFilter, setUseFilter] = useState(true);
 
   const handleGenerate = async () => {
     setIsGenerating(true);
     setGeneratedPeptides([]);
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-
-    const mockPeptides = [
-      { sequence: 'ACDEFGHIK', stability: 0.92 },
-      { sequence: 'LMNPQRSTV', stability: 0.88 },
-      { sequence: 'WYACDEFGH', stability: 0.85 },
-    ];
-
-    setGeneratedPeptides(mockPeptides);
-    setIsGenerating(false);
+    try {
+      const peptides = await generatePeptides({
+        num_sequences: 6,
+        min_length: parseInt(length) || 10,
+        stability_filter: useFilter
+      });
+      setGeneratedPeptides(peptides);
+    } catch (error) {
+      console.error("Error generating peptides:", error);
+    } finally {
+      setIsGenerating(false);
+    }
   };
 
   return (
@@ -37,7 +40,13 @@ const Generation = () => {
             <div className="space-y-6">
               <h2 className="text-xl font-bold tracking-[-0.015em] border-b border-border-light dark:border-border-dark pb-3">Generation Parameters</h2>
               <TextInput label="Target Protein ID" placeholder="e.g., PDB:1A2B" />
-              <TextInput label="Desired Peptide Length" type="number" placeholder="e.g., 10" />
+              <TextInput
+                label="Desired Peptide Length"
+                type="number"
+                placeholder="e.g., 10"
+                value={length}
+                onChange={(e) => setLength(e.target.value)}
+              />
               <SelectInput label="Graph Transformer Model" options={['LightGNN-v2 (Recommended)', 'LightGNN-v1', 'Transformer-XL']} />
               <SelectInput label="BioPDB Dataset Version" options={['BioPDB 2024-Q2', 'BioPDB 2024-Q1', 'BioPDB 2023-Q4']} />
               <div className="flex items-center justify-between pt-2">
@@ -46,7 +55,13 @@ const Generation = () => {
                   <span className="material-symbols-outlined text-base text-subtext-light dark:text-subtext-dark cursor-help" title="Only return peptides with a predicted stability score above 0.85.">help</span>
                 </div>
                 <label className="relative inline-flex items-center cursor-pointer">
-                  <input defaultChecked className="sr-only peer" id="stability-filter" type="checkbox" />
+                  <input
+                    checked={useFilter}
+                    onChange={(e) => setUseFilter(e.target.checked)}
+                    className="sr-only peer"
+                    id="stability-filter"
+                    type="checkbox"
+                  />
                   <div className="w-11 h-6 bg-gray-200 dark:bg-gray-700 rounded-full peer peer-focus:ring-2 peer-focus:ring-primary/50 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
                 </label>
               </div>
