@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://user.github.io/LightGNN-Peptide",
+  "homepage": "https://quangmytam.github.io/Peptide-Design-Lightweight-Model",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

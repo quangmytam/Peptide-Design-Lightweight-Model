@@ -11,7 +11,7 @@ import About from './pages/About';
 
 function App() {
   return (
-    <BrowserRouter basename="/LightGNN-Peptide">
+    <BrowserRouter basename="/Peptide-Design-Lightweight-Model">
       <Routes>
         <Route element={<PageLayout />}>
           <Route index element={<Home />} />
