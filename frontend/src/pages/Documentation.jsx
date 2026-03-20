@@ -1,20 +1,25 @@
 import React, { useRef } from 'react';
 
-const slidestyle = "bg-white/50 dark:bg-background-dark/50 backdrop-blur-lg rounded-3xl px-4 md:px-8 lg:px-14 py-8 md:py-10 lg:py-12 shadow-lg border border-gray-200/80 dark:border-gray-700/80 relative transition-all duration-300 hover:shadow-xl w-[98%] max-w-[1900px] mx-auto flex flex-col min-h-[92vh] my-[4vh] group cursor-pointer";
+const slidestyle = "bg-white/50 dark:bg-background-dark/50 backdrop-blur-lg rounded-3xl px-6 md:px-10 lg:px-16 py-8 md:py-10 lg:py-12 shadow-xl border border-gray-200/80 dark:border-gray-700/80 relative transition-all duration-300 w-[97%] max-w-[1900px] mx-auto flex flex-col min-h-[85vh] my-[4vh] group cursor-pointer overflow-hidden";
 
 const slidesData = [
   {
     id: 1,
     title: "",
     content: (
-      <div className="text-center mt-10 space-y-6">
+      <div className="text-center mt-4 space-y-6">
+        <img
+          src="/Peptide-Design-Lightweight-Model/Logo_VLU_2022.png"
+          alt="Logo Trường Đại học Văn Lang"
+          className="mx-auto h-14 md:h-16 object-contain drop-shadow-md mb-2"
+        />
         <p className="text-xl text-gray-500 dark:text-gray-400 font-bold uppercase tracking-widest mb-2">BÁO CÁO ĐỒ ÁN TỐT NGHIỆP</p>
         <p className="text-lg font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-widest mb-6 border-b-2 border-blue-200 dark:border-blue-900 inline-block pb-2">Khoa Công Nghệ Thông Tin - Chuyên ngành Trí Tuệ Nhân Tạo</p>
-        <h2 className="text-5xl lg:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 mb-8 leading-tight">
-          NGHIÊN CỨU VÀ PHÁT TRIỂN MÔ HÌNH LIGHTWEIGHT CHO SINH TẠO CHUỖI PEPTIDE NGẮN CÓ ĐỘ ỔN ĐỊNH CẤU TRÚC CAO
+        <h2 className="text-4xl lg:text-[2.5rem] font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 mb-8 leading-snug min-h-[8rem] md:min-h-[10rem] flex items-center justify-center py-4 uppercase">
+          Nghiên cứu kiến trúc LightweightPeptideGen cho sinh tạo chuỗi Peptide ngắn có độ ổn định và chức năng cao
         </h2>
-        <div className="text-xl font-medium text-slate-800 dark:text-gray-200 space-y-4 max-w-xl mx-auto bg-white/60 dark:bg-slate-800/60 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
-          <p className="flex justify-between border-b border-gray-200 dark:border-gray-700 pb-2"><strong>Sinh viên:</strong> <span>Quang Mỹ Tâm - 2274802010784</span></p>
+        <div className="text-xl font-medium text-slate-800 dark:text-gray-200 space-y-4 max-w-xl mx-auto bg-white/60 dark:bg-slate-800/60 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm relative z-10">
+          <p className="flex justify-between border-b border-gray-200 dark:border-gray-700 pb-2"><strong>Sinh viên thực hiện:</strong> <span>Quang Mỹ Tâm - 2274802010784</span></p>
           <p className="flex justify-between border-b border-gray-200 dark:border-gray-700 pb-2"><strong>Giảng viên hướng dẫn:</strong> <span className="text-primary font-bold">ThS. Nguyễn Thị Mỹ Linh</span></p>
         </div>
       </div>
@@ -22,225 +27,328 @@ const slidesData = [
   },
   {
     id: 2,
-    title: "Tổng quan đề tài",
+    title: "1. Peptide và Amino Acid — Nền tảng sinh học của bài toán",
     content: (
-      <div className="space-y-6 text-xl">
-        <ul className="list-disc pl-8 space-y-5 text-slate-800 dark:text-slate-200">
-          <li>Sự phát triển mạnh mẽ của Deep Learning và Generative AI từ 2022 (AlphaFold2, ESM-2) mang lại độ chính xác cao nhưng đòi hỏi <strong>tài nguyên khổng lồ</strong> (hàng tỷ tham số, GPU clusters).</li>
-          <li>Điều này tạo rào cản lớn cho các phòng thí nghiệm quy mô nhỏ và các nước đang phát triển.</li>
-          <li>
-            Mô hình tạo sinh tuần túy dựa trên chuỗi (sequence-only) thường gặp hiện tượng <strong>“ảo giác cấu trúc” (Structural Hallucination):</strong>
-            <ul className="list-[circle] pl-8 mt-3 space-y-2 text-rose-600 dark:text-rose-400 font-medium">
-              <li>Sinh ra peptide có điểm số lý thuyết in-silico cao</li>
-              <li>Thiếu giới hạn hình học không gian (khoảng cách Cα, góc liên kết)</li>
-              <li>Thất bại khi gấp cuộn 3D trong thực nghiệm (wet lab)</li>
+      <div className="grid md:grid-cols-2 gap-10 text-xl items-center h-full">
+        <div className="space-y-6">
+          <div className="bg-blue-50 dark:bg-blue-900/20 p-8 rounded-3xl border border-blue-200 dark:border-blue-800 shadow-sm relative">
+            <h3 className="font-bold text-2xl text-blue-600 dark:text-blue-400 mb-4 flex items-center gap-2 border-b-2 border-blue-200 dark:border-blue-800 pb-3">
+              <span className="material-symbols-outlined text-3xl">biotech</span> Cơ sở Peptide
+            </h3>
+            <p className="font-medium text-slate-700 dark:text-slate-300 leading-relaxed">
+              <strong>Peptide</strong> là phân tử sinh học gồm <strong>2–50 amino acid</strong> nối nhau bằng liên kết –CO–NH–.
+            </p>
+            <ul className="list-disc pl-6 mt-4 space-y-3 text-lg font-medium">
+              <li>Amino acid là "token sinh học" của tự nhiên (20 loại tiêu chuẩn).</li>
+              <li>Peptide kháng khuẩn (AMPs) phá vỡ màng tế bào vi khuẩn.</li>
+              <li>Đặc thù: Chuỗi + Cấu trúc rỗng 3D + Năng lượng sinh học.</li>
             </ul>
-          </li>
-        </ul>
-        <div className="mt-8 p-6 bg-blue-50 dark:bg-blue-900/20 rounded-2xl border border-blue-200 dark:border-blue-800 text-center font-bold text-2xl text-blue-700 dark:text-blue-300 shadow-inner">
-          ➡️ Cần nghiên cứu kiến trúc mô hình tinh gọn (Lightweight) tối ưu hiệu năng và tài nguyên trên GPU đơn.
+          </div>
+        </div>
+        <div className="space-y-6">
+          <div className="bg-rose-50 dark:bg-rose-900/10 p-8 rounded-3xl border border-rose-200 dark:border-rose-800 shadow-sm">
+            <h3 className="font-bold text-2xl text-rose-600 dark:text-rose-400 mb-4 flex items-center gap-2 border-b-2 border-rose-200 dark:border-rose-800 pb-3">
+              <span className="material-symbols-outlined text-3xl">public</span> Không gian tổ hợp vô tận
+            </h3>
+            <div className="text-center my-6">
+              <p className="text-lg text-slate-500 font-medium mb-2">Số lượng peptide 50 amino acid có thể tồn tại:</p>
+              <h4 className="text-5xl font-black text-rose-600 dark:text-rose-500 drop-shadow-sm flex justify-center items-center gap-3">
+                <span className="text-3xl text-slate-400">≈</span> 20<sup>50</sup>
+              </h4>
+            </div>
+            <p className="font-medium text-slate-700 dark:text-slate-300 leading-relaxed text-center">
+              Lớn hơn số lượng nguyên tử trong vũ trụ. Không thể rà soát thực nghiệm mà <strong>bắt buộc phải cần đến Học sâu tạo sinh.</strong>
+            </p>
+          </div>
         </div>
       </div>
     )
   },
   {
     id: 3,
-    title: "Tính cấp thiết",
+    title: "2. Các hướng mô hình nổi bật trong thiết kế peptide",
     content: (
-      <div className="grid md:grid-cols-2 gap-8 text-xl">
-        <div className="space-y-6">
-          <ul className="list-disc pl-8 space-y-6 text-slate-800 dark:text-slate-200">
-            <li>Nhu cầu thiết kế peptide kháng khuẩn (AMPs) mới để <strong>đối phó kháng kháng sinh.</strong></li>
-            <li>Hạn chế về GPU/VRAM tại các trung tâm nghiên cứu làm chậm trễ tiến trình in-silico.</li>
-            <li>Hơn 70% peptide AI-designed thất bại do không có ràng buộc tính chất hóa-lý và thiếu khối mô hình hóa đa nhiệm.</li>
-          </ul>
+      <div className="flex flex-col h-full space-y-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 flex-1">
+          {/* RNN */}
+          <div className="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm flex flex-col justify-between hover:shadow-md transition">
+            <div>
+              <div className="w-14 h-14 rounded-xl bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center mb-4 text-orange-600">
+                <span className="material-symbols-outlined text-3xl">psychology</span>
+              </div>
+              <h4 className="font-bold text-lg text-slate-800 dark:text-slate-100 mb-2">RNN / LSTM</h4>
+              <p className="text-sm font-medium text-slate-600 dark:text-slate-400">Sinh chuỗi tuần tự theo từng Token (chữ cái).</p>
+            </div>
+            <div className="mt-4 pt-4 border-t border-slate-200 dark:border-slate-600 text-sm">
+              <div className="text-emerald-600 dark:text-emerald-400 font-semibold mb-1">+ Rất nhẹ, phản xạ nhanh</div>
+              <div className="text-rose-600 dark:text-rose-400 font-semibold">- Mất ngữ cảnh, mù cấu trúc 3D</div>
+            </div>
+          </div>
+          {/* Transformer */}
+          <div className="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm flex flex-col justify-between hover:shadow-md transition">
+            <div>
+              <div className="w-14 h-14 rounded-xl bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mb-4 text-blue-600">
+                <span className="material-symbols-outlined text-3xl">hub</span>
+              </div>
+              <h4 className="font-bold text-lg text-slate-800 dark:text-slate-100 mb-2">Transformer (PLMs)</h4>
+              <p className="text-sm font-medium text-slate-600 dark:text-slate-400">Học ngôn ngữ Protein (VD: ESM-2, AlphaFold2).</p>
+            </div>
+            <div className="mt-4 pt-4 border-t border-slate-200 dark:border-slate-600 text-sm">
+              <div className="text-emerald-600 dark:text-emerald-400 font-semibold mb-1">+ Tri thức tiến hóa cực sâu</div>
+              <div className="text-rose-600 dark:text-rose-400 font-semibold">- Hàng Tỷ tham số, chi phí VRAM KHỔNG LỒ</div>
+            </div>
+          </div>
+          {/* GNN */}
+          <div className="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm flex flex-col justify-between hover:shadow-md transition">
+            <div>
+              <div className="w-14 h-14 rounded-xl bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center mb-4 text-emerald-600">
+                <span className="material-symbols-outlined text-3xl">scatter_plot</span>
+              </div>
+              <h4 className="font-bold text-lg text-slate-800 dark:text-slate-100 mb-2">Graph Neural Networks</h4>
+              <p className="text-sm font-medium text-slate-600 dark:text-slate-400">Mô hình hóa tương tác đỉnh (Node) và cạnh giới hạn Không gian 3D.</p>
+            </div>
+            <div className="mt-4 pt-4 border-t border-slate-200 dark:border-slate-600 text-sm">
+              <div className="text-emerald-600 dark:text-emerald-400 font-semibold mb-1">+ Bắt được bản đồ gấp cuộn Local</div>
+              <div className="text-rose-600 dark:text-rose-400 font-semibold">- Chỉ xếp xỉ liên kết tĩnh bề mặt</div>
+            </div>
+          </div>
+          {/* GAN */}
+          <div className="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm flex flex-col justify-between hover:shadow-md transition">
+            <div>
+              <div className="w-14 h-14 rounded-xl bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center mb-4 text-purple-600">
+                <span className="material-symbols-outlined text-3xl">balance</span>
+              </div>
+              <h4 className="font-bold text-lg text-slate-800 dark:text-slate-100 mb-2">GAN Generator</h4>
+              <p className="text-sm font-medium text-slate-600 dark:text-slate-400">Bộ tạo (Sinh) đấu đối kháng với Bộ phân loại (Discriminator).</p>
+            </div>
+            <div className="mt-4 pt-4 border-t border-slate-200 dark:border-slate-600 text-sm">
+              <div className="text-emerald-600 dark:text-emerald-400 font-semibold mb-1">+ Tăng Realism của Data sinh ra</div>
+              <div className="text-rose-600 dark:text-rose-400 font-semibold">- Dễ đứt gãy Gradient do "Mode Collapse" rời rạc</div>
+            </div>
+          </div>
         </div>
-        <div className="bg-emerald-50 dark:bg-emerald-900/10 p-8 rounded-3xl border border-emerald-200 dark:border-emerald-800 flex flex-col justify-center">
-          <h3 className="font-bold text-2xl text-emerald-700 dark:text-emerald-400 mb-6 border-b-2 border-emerald-200 dark:border-emerald-800 pb-3">Xu hướng giải quyết:</h3>
-          <ul className="list-[circle] pl-8 space-y-4 font-semibold text-emerald-800 dark:text-emerald-300">
-            <li>Lightweight Model (Tối giản tham số)</li>
-            <li>Hybrid CNN-Transformer & RNN</li>
-            <li>Tích hợp Mạng Nơ-ron Đồ thị (GNN)</li>
-            <li>Học Tăng Cường (Reinforcement Learning) để tối ưu trực tiếp đặc tính sinh học.</li>
-          </ul>
+        <div className="mt-4 bg-indigo-50 dark:bg-indigo-900/10 border-l-4 border-indigo-500 p-6 rounded-r-xl shadow-inner font-medium text-xl text-indigo-900 dark:text-indigo-200">
+          <strong>👉 Insight quan trọng:</strong> KHÔNG CÓ một kiến trúc nào đơn lẻ tự giải quyết hoàn hảo bài toán. Đây là tiền đề cho giải pháp **Kiến trúc Lai (Hybrid)** ra đời.
         </div>
       </div>
     )
   },
   {
     id: 4,
-    title: "Mục tiêu nghiên cứu",
+    title: "3. Triết lý thiết kế kiến trúc LightweightPeptideGen",
     content: (
-      <div className="grid md:grid-cols-2 gap-10 text-xl">
-        <div className="space-y-4 bg-white/60 dark:bg-slate-800/60 p-8 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-sm">
-          <h3 className="font-bold text-2xl text-blue-600 dark:text-blue-400 border-b-2 border-blue-200 dark:border-blue-800 pb-3 flex items-center gap-2">
-            <span className="material-symbols-outlined">flag</span> Mục tiêu tổng quát
-          </h3>
-          <p className="font-medium text-slate-700 dark:text-slate-300 leading-relaxed">
-            Thiết kế kiến trúc mô hình học sâu sinh học gọn nhẹ (LightweightPeptideGen) dựa trên GRU Generator kết hợp GAN, có khả năng:
-          </p>
-          <ul className="list-disc pl-8 space-y-3 font-semibold text-slate-800 dark:text-slate-200">
-            <li>Sinh tạo de novo peptide ngắn (&lt;50 aa) đạt độ ổn định 3D.</li>
-            <li>Kiểm soát đặc tính hóa-lý (kỵ nước, độc tính).</li>
-            <li>Vận hành siêu tốc và bảo đảm khả năng mở rộng.</li>
+      <div className="grid md:grid-cols-2 gap-8 h-full items-center">
+        <div className="bg-slate-800 text-slate-100 p-8 rounded-3xl shadow-xl relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-2xl"></div>
+          <h3 className="text-3xl font-black mb-8 border-b border-slate-600 pb-4">Tứ Trụ Kiến Trúc</h3>
+          <ul className="space-y-6">
+            <li className="flex items-center gap-4">
+              <div className="w-12 h-12 bg-blue-500/20 text-blue-400 rounded-xl flex items-center justify-center shrink-0">
+                <span className="material-symbols-outlined">auto_stories</span>
+              </div>
+              <div>
+                <strong className="block text-xl">1. Giữ tri thức Tự nhiên (Evolution)</strong>
+                <span className="text-sm text-slate-400">KHÔNG Train chuỗi từ đầu. Kế thừa ngôn ngữ Protein lõi.</span>
+              </div>
+            </li>
+            <li className="flex items-center gap-4">
+              <div className="w-12 h-12 bg-emerald-500/20 text-emerald-400 rounded-xl flex items-center justify-center shrink-0">
+                <span className="material-symbols-outlined">shape_line</span>
+              </div>
+              <div>
+                <strong className="block text-xl">2. Ép hiểu Hình học (Spatial Layout)</strong>
+                <span className="text-sm text-slate-400">Không bỏ qua tương tác khoảng cách giữa các Nodes Cα.</span>
+              </div>
+            </li>
+            <li className="flex items-center gap-4">
+              <div className="w-12 h-12 bg-amber-500/20 text-amber-400 rounded-xl flex items-center justify-center shrink-0">
+                <span className="material-symbols-outlined">science</span>
+              </div>
+              <div>
+                <strong className="block text-xl">3. Kiểm soát Vật lý hóa (Biophysics)</strong>
+                <span className="text-sm text-slate-400">Giới hạn đặc tính tĩnh điện, ưa nước để kháng "Ảo giác sinh học".</span>
+              </div>
+            </li>
+            <li className="flex items-center gap-4">
+              <div className="w-12 h-12 bg-rose-500/20 text-rose-400 rounded-xl flex items-center justify-center shrink-0">
+                <span className="material-symbols-outlined">bolt</span>
+              </div>
+              <div>
+                <strong className="block text-xl">4. Tối Ưu Tài Nguyên (Lightweight)</strong>
+                <span className="text-sm text-slate-400">Toàn bộ chạy được trên Local Desktop GPU truyền thống (&lt;24GB).</span>
+              </div>
+            </li>
           </ul>
         </div>
-        <div className="space-y-4 bg-white/60 dark:bg-slate-800/60 p-8 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-sm">
-          <h3 className="font-bold text-2xl text-purple-600 dark:text-purple-400 border-b-2 border-purple-200 dark:border-purple-800 pb-3 flex items-center gap-2">
-            <span className="material-symbols-outlined">track_changes</span> Mục tiêu cụ thể
-          </h3>
-          <ul className="list-decimal pl-8 space-y-4 font-medium text-slate-800 dark:text-slate-200">
-            <li>Xây dựng pipeline dữ liệu từ 3 nguồn (DBAASP, APD3, RNN-Hem).</li>
-            <li>Tích hợp cơ chế sinh có điều kiện thông qua 18 đặc trưng hóa lý.</li>
-            <li>Huấn luyện đa giai đoạn: MLE → GAN → RL (SCST).</li>
-            <li>Đánh giá chỉ số sinh học so với baseline chuyên ngành.</li>
-          </ul>
+        <div className="text-center px-8">
+          <span className="material-symbols-outlined text-[8rem] text-slate-200 dark:text-slate-800 drop-shadow mb-6">extension</span>
+          <p className="text-2xl font-medium leading-relaxed text-slate-700 dark:text-slate-300">
+            Mục tiêu là xây dựng khối <strong>Generator Thông Minh</strong> vừa có độ sáng tạo từ tính Ngẫu nhiên của Text, vừa bó hẹp hợp lý bởi tính Logic của Hóa Học.
+          </p>
         </div>
       </div>
     )
   },
   {
     id: 5,
-    title: "Phạm vi và Đối tượng nghiên cứu",
+    title: "4. Tổng quan kiến trúc mô hình",
     content: (
-      <div className="grid md:grid-cols-2 gap-8 text-xl">
-        <div className="bg-emerald-50 dark:bg-emerald-900/10 p-8 rounded-3xl border border-emerald-200 dark:border-emerald-800 shadow-sm">
-          <h3 className="font-bold text-2xl text-emerald-700 dark:text-emerald-400 mb-6 flex items-center gap-2">
-            <span className="material-symbols-outlined">center_focus_strong</span> Phạm vi cốt lõi
-          </h3>
-          <ul className="list-disc pl-8 space-y-4 text-emerald-900 dark:text-emerald-100 font-medium">
-            <li><strong>Dữ liệu:</strong> ~150.000 chuỗi peptide.</li>
-            <li><strong>Giới hạn chiều dài:</strong> Peptide ngắn dưới 50 amino acid.</li>
-            <li><strong>Hạ tầng:</strong> Triển khai trên GPU đơn phổ thông (RAM 24GB).</li>
-            <li><strong>Phương pháp:</strong> GRU, GAN, RL, GNN (GATv2) và Knowledge Distillation.</li>
-          </ul>
-        </div>
-        <div className="bg-red-50 dark:bg-red-900/10 p-8 rounded-3xl border border-red-200 dark:border-red-800 shadow-sm relative overflow-hidden">
-          <span className="material-symbols-outlined absolute -bottom-10 -right-10 text-9xl text-red-500/10">do_not_disturb</span>
-          <h3 className="font-bold text-2xl text-red-700 dark:text-red-400 mb-6 flex items-center gap-2 relative z-10">
-            <span className="material-symbols-outlined">block</span> Không tập trung
-          </h3>
-          <ul className="list-disc pl-8 space-y-4 text-red-900 dark:text-red-100 font-medium relative z-10">
-            <li>Dự đoán cấu trúc tinh thể Protein 3D phức tạp đầy đủ.</li>
-            <li>Productization thương mại hóa doanh nghiệp lớn.</li>
-            <li>Kiểm chứng thực nghiệm ướt (Wet lab validation) - chỉ áp dụng <strong>In-silico evaluation</strong>.</li>
-          </ul>
+      <div className="flex flex-col items-center justify-center gap-6 h-full w-full max-w-6xl mx-auto">
+        {/* Flow Map UI (Top to Bottom visual) */}
+        <div className="w-full bg-white/60 dark:bg-slate-900/60 rounded-3xl p-6 border border-slate-200 dark:border-slate-700 shadow-sm relative">
+          <div className="flex flex-col md:flex-row justify-between items-center text-center font-bold text-[0.8rem] md:text-sm lg:text-base mb-6 text-slate-500 gap-2">
+            <div className="bg-slate-100 dark:bg-slate-800 px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 grow">Input Peptide</div>
+            <span className="material-symbols-outlined text-xl rotate-90 md:rotate-0">arrow_forward</span>
+            <div className="bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 px-4 py-2 rounded-xl border border-blue-200 dark:border-blue-700 grow">ESM-2 Encoding</div>
+            <span className="material-symbols-outlined text-xl rotate-90 md:rotate-0">arrow_forward</span>
+            <div className="bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300 px-4 py-2 rounded-xl border border-purple-200 dark:border-purple-700 grow">GATv2 Graph</div>
+            <span className="material-symbols-outlined text-xl rotate-90 md:rotate-0">arrow_forward</span>
+            <div className="bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 px-4 py-2 rounded-xl border border-amber-200 dark:border-amber-700 grow">BioPhysical Fusion</div>
+            <span className="material-symbols-outlined text-xl rotate-90 md:rotate-0">arrow_forward</span>
+            <div className="bg-rose-100 dark:bg-rose-900/40 text-rose-700 dark:text-rose-300 px-4 py-2 rounded-xl border border-rose-200 dark:border-rose-700 grow">GRU (GAN)</div>
+            <span className="material-symbols-outlined text-xl rotate-90 md:rotate-0">arrow_forward</span>
+            <div className="bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 px-4 py-2 rounded-xl border border-emerald-200 dark:border-emerald-700 grow">RL Optimizer</div>
+          </div>
+          <div className="relative group w-full mx-auto">
+            <img
+              src="/Peptide-Design-Lightweight-Model/ESM2-GAT.png"
+              alt="Architecture Overview"
+              className="relative w-full rounded-2xl shadow object-contain bg-white dark:bg-slate-800 max-h-[450px]"
+            />
+          </div>
         </div>
       </div>
     )
   },
   {
     id: 6,
-    title: "Phương pháp nghiên cứu",
+    title: "5. Thành phần 1 — Sequence Backbone (ESM-2 Lightweight)",
     content: (
-      <div className="space-y-8 text-xl">
-        <div className="bg-white dark:bg-slate-800 p-8 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-sm">
-          <h3 className="font-bold text-2xl text-indigo-600 dark:text-indigo-400 mb-4 flex items-center gap-2 border-b-2 border-indigo-100 dark:border-indigo-900 pb-2">
-            <span className="material-symbols-outlined">account_tree</span> Tiếp cận Phương pháp luận
-          </h3>
-          <ul className="list-disc pl-8 space-y-4 text-slate-700 dark:text-slate-300">
-            <li><strong>Phương pháp mô hình hóa:</strong> Chuyển đổi chuỗi thành 23 token số hóa. Biểu diễn 18 đặc trưng lý hóa thành Vector liên tục phục vụ Cross-Attention.</li>
-            <li><strong>Huấn luyện đa giai đoạn:</strong> Kết hợp Maximum Likelihood Estimation (Teacher Forcing) mô phỏng phân phối, sau đó áp dụng GAN đối kháng (CNN Discriminator) giảm thiểu mode collapse, và tinh chỉnh thuật toán SCST.</li>
-            <li><strong>Phương pháp đánh giá:</strong> Entropy, N-gram Diversity, Instability Index, GRAVY, Hemolytic Score so sánh với 4 mô hình tham chiếu.</li>
-          </ul>
+      <div className="grid md:grid-cols-2 gap-10 items-center h-full">
+        <div className="flex justify-center h-full">
+          <img src="/Peptide-Design-Lightweight-Model/esm2.png" alt="ESM-2 Architecture" className="rounded-3xl border border-slate-200 dark:border-slate-700 shadow-lg object-cover bg-white w-full h-full max-h-[480px]" />
+        </div>
+        <div className="space-y-6 text-xl">
+          <div className="bg-blue-50 dark:bg-blue-900/20 p-8 rounded-3xl border border-blue-200 dark:border-blue-800 shadow-sm">
+             <p className="font-semibold text-blue-900 dark:text-blue-100 leading-relaxed mb-6">
+              ESM-2 (Evolutionary Scale Modeling) đóng vai trò là cốt lõi <strong className="text-blue-600 dark:text-blue-400">Mã hóa Tri thức tiến hóa Sequences</strong>.
+            </p>
+            <h4 className="font-black text-2xl text-blue-700 dark:text-blue-300 mb-4 border-b border-blue-200 dark:border-blue-800 pb-2">Chiến lược: Selective Freezing</h4>
+            <ul className="list-disc pl-6 space-y-4 text-slate-700 dark:text-slate-300 font-medium">
+              <li>
+                <strong>Đóng băng (Freeze) 90-95% Layers đầu:</strong> Giữ nguyên "semantic tiến hóa" học được từ phân tích 250 triệu chuỗi Protein thuộc cơ sở dữ liệu UniRef. Giúp tiết kiệm cực kỳ lớn tính toán Gradient.
+              </li>
+              <li>
+                <strong>Fine-tune 2 lơp Transformer cuối:</strong> Ép mô hình chuyển sự tập trung vào "ngữ pháp sinh học" đặc thù của <em>Peptide ngắn kháng khuẩn</em> thay vì các phân tử khổng lồ.
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     )
   },
   {
     id: 7,
-    title: "Pipeline Tổng thể Hệ thống",
+    title: "6. Thành phần 2 — Spatial Graph Encoder (GATv2)",
     content: (
-      <div className="space-y-6 text-xl">
-        <div className="p-6 bg-slate-100 dark:bg-slate-800 rounded-3xl text-center font-bold lg:text-2xl tracking-wide text-slate-800 dark:text-slate-200 shadow-inner break-words border-2 border-dashed border-slate-300 dark:border-slate-600 relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-cyan-500/5"></div>
-          Dữ liệu (DBAASP/APD3) ➔ Tiền Xử Lý (20 Amino Acids) ➔ <br className="hidden md:block" /><br className="hidden md:block" />
-          Trích Xuất Đặc Trưng (ESM-2 + 18 Lý hóa + GATv2) ➔ <br className="hidden md:block" /><br className="hidden md:block" />
-          GAN Generator (GRU) / Discriminator (CNN) ➔ Hậu Xử Lý (Filter)
+      <div className="grid md:grid-cols-2 gap-10 items-center h-full">
+        <div className="space-y-6 text-xl order-2 md:order-1">
+          <div className="bg-purple-50 dark:bg-purple-900/20 p-8 rounded-3xl border border-purple-200 dark:border-purple-800 shadow-sm">
+            <p className="font-semibold text-purple-900 dark:text-purple-100 leading-relaxed mb-6">
+              Chuyển đổi chuỗi 1D thành <strong>Đồ thị Không gian 3D</strong> thông qua Mạng Graph Attention Networks (GATv2).
+            </p>
+            <ul className="list-disc pl-6 space-y-4 text-slate-700 dark:text-slate-300 font-medium mb-6">
+              <li><strong>Node (Đỉnh):</strong> Amino acid mang embedding 20 chiều đặc thù chữ cái.</li>
+              <li><strong>Edge (Cạnh):</strong> Tương tác vật lý bán kính <code>&lt; 8Å</code> quét dọc xương sống phân tử Cα. Bắt sóng tương tác tĩnh điện / Van der Waals / H-Bond.</li>
+            </ul>
+            <div className="bg-white/60 dark:bg-slate-900/60 p-4 rounded-xl border border-purple-200/50 dark:border-purple-800 text-base italic text-slate-600 dark:text-slate-400">
+              <strong className="text-purple-600 dark:text-purple-400">Vì sao GATv2?</strong> Khác GATv1 bị kẹt "Static attention", GATv2 sở hữu cơ chế Attention Động kết hợp 4 Heads tăng cường phân giải sức hút (rank) giữa Node X và Y liên tục biến hóa chiều sâu. Mô hình **vừa hiểu thứ tự, vừa hiểu cách gấp cuộn (Folding).**
+            </div>
+          </div>
         </div>
-        <div className="grid grid-cols-2 gap-6 mt-8">
-          <div className="bg-white/50 dark:bg-slate-800/50 p-6 rounded-2xl border border-slate-200 dark:border-slate-700">
-            <h4 className="font-bold text-blue-600 dark:text-blue-400 mb-3">Đầu vào (Input)</h4>
-            <ul className="list-disc pl-6 text-base space-y-2">
-              <li>Chuỗi từ 5 - 50 axit amin.</li>
-              <li>Padding về độ dài L_max = 50.</li>
-              <li>Cấu trúc Cα ước tính.</li>
-            </ul>
-          </div>
-          <div className="bg-white/50 dark:bg-slate-800/50 p-6 rounded-2xl border border-slate-200 dark:border-slate-700">
-            <h4 className="font-bold text-emerald-600 dark:text-emerald-400 mb-3">Đầu ra (Output)</h4>
-            <ul className="list-disc pl-6 text-base space-y-2">
-              <li>Peptide tái tổ hợp ổn định 3D.</li>
-              <li>Hệ số AMP Probability dự đoán.</li>
-              <li>Dữ liệu 18 tham số hóa lý thực.</li>
-            </ul>
-          </div>
+        <div className="flex justify-center h-full order-1 md:order-2">
+          <img src="/Peptide-Design-Lightweight-Model/gatarchi.png" alt="GATv2 Architecture" className="rounded-3xl border border-slate-200 dark:border-slate-700 shadow-lg object-cover bg-white p-4 w-full h-full max-h-[480px]" />
         </div>
       </div>
     )
   },
   {
     id: 8,
-    title: "Kiến trúc mô hình lai tinh gọn",
+    title: "7. Thành phần 3 — Biophysical Conditional Control",
     content: (
-      <div className="grid md:grid-cols-2 gap-8 h-full items-center text-xl">
-        <div className="space-y-6">
-          <h3 className="font-bold text-3xl text-blue-600 dark:text-blue-400 mb-4 flex items-center gap-2">
-            <span className="material-symbols-outlined">hub</span> ESM-GATv2 Fusion + GAN
-          </h3>
-          <ul className="list-disc pl-8 space-y-4 text-slate-700 dark:text-slate-300">
-            <li><strong>Nhánh Chuỗi (1D):</strong> Trích xuất ngữ cảnh tiến hóa (Evolutionary) bằng ESM-2 Backbone rút gọn.</li>
-            <li><strong>Nhánh Không Gian (3D):</strong> Mã hóa đặc trưng hình học Cα qua mạng nơ-ron đồ thị GATv2 động.</li>
-            <li><strong>Tích hợp:</strong> Cross-Attention trộn lẫn biểu diễn chuỗi + biểu đồ + 18 ma trận lý hóa tuyến tính.</li>
-            <li><strong>Tạo sinh (Generator):</strong> GRU tuần tự lấy không gian tiềm ẩn sinh token Peptide.</li>
-            <li><strong>Phân biệt (Discriminator):</strong> CNN đối kháng phân loại thật/giả.</li>
-          </ul>
+      <div className="space-y-6 h-full flex flex-col justify-center">
+        <div className="text-center max-w-4xl mx-auto mb-6">
+          <h3 className="text-2xl font-black text-amber-600 dark:text-amber-400 mb-2">Đổi mới Đột phá: Sự tham gia của tham số Hóa Lý </h3>
+          <p className="text-lg font-medium text-slate-600 dark:text-slate-300">
+            Hạn chế "Ảo giác cấu trúc". Biến latent space tự do thành Không gian có <strong>điều kiện Giới hạn Vật lý</strong>. 
+          </p>
         </div>
-        <div className="flex justify-center items-center h-full p-4">
-          {/* Hình ảnh Kiến trúc Mạng GNN */}
-          <div className="relative group w-full">
-            <div className="absolute -inset-2 bg-gradient-to-r from-blue-500 to-emerald-500 rounded-xl blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
-            <img src="/Peptide-Design-Lightweight-Model/peptide%20GNN.png" alt="Kiến trúc GNN" className="relative rounded-xl border border-slate-300 dark:border-slate-600 shadow-lg object-contain bg-white dark:bg-slate-800 max-h-[400px] w-full" />
+
+        <div className="grid md:grid-cols-3 gap-6 mb-8 text-base">
+          <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm hover:-translate-y-1 transition duration-300">
+            <h4 className="font-bold border-b border-amber-200 dark:border-amber-900 pb-2 mb-4 text-amber-600 dark:text-amber-500">Stability & Safety</h4>
+            <ul className="space-y-2 text-slate-600 dark:text-slate-400 font-medium">
+              <li>• Instability Index (II)</li>
+              <li>• Hemolytic Score (Toxicity)</li>
+              <li>• Thermodynamic Stability</li>
+              <li>• Boman Index</li>
+              <li>• Aliphatic Index</li>
+              <li>• Molecular Weight</li>
+            </ul>
+          </div>
+          <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm hover:-translate-y-1 transition duration-300">
+            <h4 className="font-bold border-b border-amber-200 dark:border-amber-900 pb-2 mb-4 text-amber-600 dark:text-amber-500">Hydrophobicity (Kỵ Nước)</h4>
+            <ul className="space-y-2 text-slate-600 dark:text-slate-400 font-medium">
+              <li>• GRAVY Score</li>
+              <li>• Hydrophobic Moment</li>
+              <li>• Solvation Free Energy</li>
+              <li>• Amphiphilicity Score</li>
+              <li>• Hydrophobicity Profile</li>
+              <li>• Sequence Entropy</li>
+            </ul>
+          </div>
+          <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm hover:-translate-y-1 transition duration-300">
+            <h4 className="font-bold border-b border-amber-200 dark:border-amber-900 pb-2 mb-4 text-amber-600 dark:text-amber-500">Charge & Structure</h4>
+            <ul className="space-y-2 text-slate-600 dark:text-slate-400 font-medium">
+              <li>• Total Net Charge (pH 7)</li>
+              <li>• Isoelectric Point (pI)</li>
+              <li>• Aromaticity</li>
+              <li>• Polarity Level</li>
+              <li>• Flexibility Index</li>
+              <li>• Helix / Sheet Ratio</li>
+            </ul>
           </div>
         </div>
-      </div>
-    )
-  },
-  {
-    id: 8.5,
-    title: "Sơ đồ Tổng thể Kiến trúc ESM-2 & GATv2",
-    content: (
-      <div className="flex flex-col items-center justify-center gap-6 h-full">
-        <p className="text-lg font-medium text-slate-600 dark:text-slate-400 text-center max-w-3xl">
-          Sơ đồ minh họa luồng xử lý từ chuỗi Peptide đầu vào qua hai nhánh ESM-2 (1D) và GATv2 (3D), hợp nhất qua Cross-Attention và xuất qua GRU Generator.
-        </p>
-        <div className="relative group w-full max-w-5xl">
-          <div className="absolute -inset-2 bg-gradient-to-r from-blue-500 via-cyan-400 to-emerald-500 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-700"></div>
-          <img
-            src="/Peptide-Design-Lightweight-Model/ESM2-GAT.png"
-            alt="ESM2-GAT Architecture Overview"
-            className="relative w-full rounded-2xl border border-slate-200 dark:border-slate-700 shadow-2xl object-contain bg-white dark:bg-slate-900"
-          />
+
+        <div className="mx-auto w-full max-w-4xl bg-amber-50 dark:bg-amber-900/10 rounded-2xl p-4 border border-amber-200 dark:border-amber-800 flex items-center justify-center gap-4 text-lg font-bold text-amber-800 dark:text-amber-200">
+          <span className="material-symbols-outlined text-3xl">compress</span>
+          <span>(18 Features Vector &rarr; Chuẩn hóa Z-Score) &times; W(Linear Projection) &rarr; <span className="underline">Đưa vào Cross-Attention Cơ chế</span></span>
         </div>
       </div>
     )
   },
   {
     id: 9,
-    title: "Thành phần Backbone (ESM-2)",
+    title: "8. Thành phần 4 — Generative Core (GRU-GAN)",
     content: (
-      <div className="grid md:grid-cols-2 gap-10 items-center text-xl">
-        <div className="flex justify-center p-4">
-          <img src="/Peptide-Design-Lightweight-Model/esm2.png" alt="ESM-2 Architecture" className="rounded-2xl border-4 border-white dark:border-slate-800 shadow-xl object-contain bg-white max-h-[350px] w-full" />
+      <div className="grid md:grid-cols-2 gap-8 h-full">
+        <div className="bg-rose-50 dark:bg-rose-900/10 p-8 rounded-3xl border border-rose-200 dark:border-rose-900 shadow-sm relative overflow-hidden flex flex-col justify-center">
+          <span className="material-symbols-outlined absolute right-[-20px] top-[-20px] text-[150px] text-rose-500/10">edit</span>
+          <h3 className="text-3xl font-black text-rose-600 dark:text-rose-400 mb-6">Bộ Sinh (Generator)</h3>
+          <ul className="space-y-5 text-xl font-medium text-slate-700 dark:text-slate-300">
+            <li><strong>Lõi GRU:</strong> Thay vì Decoder Transformer khổng lồ, GRU được giữ lại để sinh Text Token (Axit Amin) qua từng Time-step. Nhẹ, nhanh.</li>
+            <li><strong>Gumbel-Softmax Tricking:</strong> Mô hình sinh ra Token rời rạc (One-hot A,T,G,C...). Để Gradient được phép chảy ngược khi huấn luyện GAN, sử dụng độ cong Gumbel.</li>
+            <li><strong>Nucleus Sampling (Top-P 0.9):</strong> Cắt ngọn xác suất kỳ lạ, tăng tỉ lệ sinh đa dạng.</li>
+          </ul>
         </div>
-        <div className="space-y-6 bg-white/40 dark:bg-slate-800/40 p-8 rounded-3xl border border-slate-200 dark:border-slate-700">
-          <h3 className="font-bold text-2xl text-blue-600 dark:text-blue-400 pb-2 border-b border-blue-200 dark:border-blue-800 mb-4">Chiến lược: Selective Freezing</h3>
-          <p className="font-medium text-slate-800 dark:text-slate-200 leading-relaxed mb-4">
-            Mô hình ngôn ngữ protein ESM-2 650M tham số được chọn vì duy trì được sức mạnh tiến hóa nhưng đủ nhẹ cho bộ nhớ 24GB.
-          </p>
-          <ul className="list-disc pl-8 space-y-4 text-base font-semibold text-slate-700 dark:text-slate-300">
-            <li><strong>Đóng băng 90-95% trọng số (Layer 1 đến N-2):</strong> Giữ nguyên tri thức tiến hóa học từ 250 triệu chuỗi UniRef. Tiết kiệm lượng lớn VRAM tính toán Gradient.</li>
-            <li><strong>Fine-tune 2 lớp Transformer cuối cùng:</strong> Giúp mô hình linh hoạt thích nghi với "ngữ pháp sinh học" đặc thù của Peptide ngắn kháng khuẩn thay vì phân tử khổng lồ.</li>
+
+        <div className="bg-slate-100 dark:bg-slate-800 p-8 rounded-3xl border border-slate-300 dark:border-slate-700 shadow-sm relative overflow-hidden flex flex-col justify-center">
+          <span className="material-symbols-outlined absolute right-[-20px] top-[-20px] text-[150px] text-slate-500/10">radar</span>
+          <h3 className="text-3xl font-black text-slate-800 dark:text-slate-100 mb-6">Bộ Giám Khảo (Discriminator)</h3>
+          <ul className="space-y-5 text-xl font-medium text-slate-600 dark:text-slate-400">
+            <li><strong>Lớp CNN 1D:</strong> Quét dọc qua toàn bộ chuỗi được sinh ra để nhìn Local Pattern (VD: Cụm Kỵ nước liên tiếp).</li>
+            <li><strong>Wasserstein GAN (WGAN):</strong> Sử dụng Earth Mover Distance đo khoảng cách phân phối Giả và Thật mượt mà hơn Jensen-Shannon chuẩn.</li>
+            <li><strong>Gradient Penalty:</strong> Trừng phạt Loss giúp GAN không bị suy sụp hàm toán. Tăng ranh giới chất lượng realism tối đa lên Peptide do AI sinh ra.</li>
           </ul>
         </div>
       </div>
@@ -248,99 +356,101 @@ const slidesData = [
   },
   {
     id: 10,
-    title: "Attention Đồ thị Không gian (GATv2)",
+    title: "9. Thành phần 5 — Reinforcement Learning Optimization",
     content: (
-      <div className="grid md:grid-cols-2 gap-8 text-xl items-center">
-        <div className="space-y-6">
-          <ul className="list-disc pl-8 space-y-4 text-slate-800 dark:text-slate-200">
-            <li><strong>Đồ thị Peptide:</strong> Node là ký tự axit amin mang one-hot vector 20 chiều, Edge là liên kết không gian bán kính <code>&lt; 8Å</code>.</li>
-            <li><strong>Tại sao lại 8Å?</strong> Phần lớn các tương tác phi liên kết có ý nghĩa sinh học (van der Waals, kỵ nước, tĩnh điện) xảy ra ở cự ly này.</li>
-          </ul>
-          <div className="bg-amber-50 dark:bg-amber-900/20 p-6 rounded-2xl border border-amber-200 dark:border-amber-800 shadow-sm mt-4">
-            <h3 className="font-bold text-xl text-amber-700 dark:text-amber-400 mb-2 flex items-center gap-2">
-              <span className="material-symbols-outlined">network_node</span> Đổi mới ở GATv2
-            </h3>
-            <p className="text-base text-amber-900 dark:text-amber-100">
-              GAT gốc mắc lỗi "Static attention". Nhờ GATv2, trọng số lan truyền Attention động α_ij nhận diện mức độ quan trọng giữa Node Nguồn và Node Đích, kết hợp 4 Heads tăng cường độ phân giải chi tiết.
-            </p>
+      <div className="flex flex-col h-full bg-emerald-50 dark:bg-emerald-900/10 rounded-3xl border border-emerald-200 dark:border-emerald-800 p-8 shadow-sm">
+        <h3 className="text-2xl font-black text-emerald-700 dark:text-emerald-400 mb-6 border-b border-emerald-200 dark:border-emerald-800 pb-3 flex items-center gap-2">
+          <span className="material-symbols-outlined text-3xl">sports_esports</span> Giai đoạn Học Tăng Cường (RL)
+        </h3>
+        <p className="text-xl font-medium text-slate-700 dark:text-slate-300 mb-8 leading-relaxed">
+          Sử dụng kỹ thuật <strong className="text-emerald-600 dark:text-emerald-400">SCST (Self-Critical Sequence Training) - thuộc dạng Policy Gradient.</strong>
+          <br/>
+          Mô hình không chỉ sinh chuỗi y hệt Data cũ, mà được thưởng lớn khi Peptide do AI sáng tác <strong>đạt các chuẩn mực Y khoa.</strong>
+        </p>
+        
+        <div className="grid md:grid-cols-2 gap-8 text-lg flex-1">
+          <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-emerald-100 dark:border-emerald-900 flex flex-col justify-center shadow">
+             <h4 className="font-bold text-emerald-600 mb-4 text-xl">Thuật toán Loss (Policy)</h4>
+             <p className="text-slate-600 dark:text-slate-400 italic mb-4">RL ép sinh Sample, tính Loss, và so sánh với Baseline trung bình nội tại để ban Reward tích cực/tiêu cực.</p>
+             <code className="bg-slate-100 dark:bg-slate-900 p-4 rounded text-sm text-pink-600 dark:text-pink-400 mx-auto w-full inline-block font-mono">
+                Loss_RL = - (Reward_sample - Reward_baseline) * log(Prob_sample)
+             </code>
           </div>
-        </div>
-        <div className="flex justify-center">
-          <img src="/Peptide-Design-Lightweight-Model/gatarchi.png" alt="GAT Architecture" className="rounded-2xl border-2 border-slate-300 dark:border-slate-600 shadow-lg object-contain bg-white dark:bg-slate-200 p-2 max-h-[400px] w-full" />
+          <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-emerald-100 dark:border-emerald-900 flex flex-col justify-center shadow">
+             <h4 className="font-bold text-emerald-600 mb-4 text-xl">Reward Function kết hợp:</h4>
+             <ul className="space-y-3 font-semibold text-slate-700 dark:text-slate-300">
+               <li className="flex items-center gap-2"><span className="text-xl">👉</span> R_Stability: Thưởng khi Instability Index &lt; 40.</li>
+               <li className="flex items-center gap-2"><span className="text-xl">👉</span> R_Tox: Phạt cực mạnh rủi ro khi Hemolytic cao.</li>
+               <li className="flex items-center gap-2"><span className="text-xl">👉</span> R_Hydrophobic: Trừu tượng hóa lực GRAVY.</li>
+               <li className="flex items-center gap-2"><span className="text-xl">👉</span> R_Thermo: Proxy năng lượng liên kết động.</li>
+             </ul>
+          </div>
         </div>
       </div>
     )
   },
   {
     id: 11,
-    title: "Tích hợp 18 Đặc trưng Sinh-Hóa",
+    title: "10. Logic huấn luyện 3 pha",
     content: (
-      <div className="space-y-8 text-xl">
-        <p className="font-medium text-slate-700 dark:text-slate-300 leading-relaxed max-w-4xl">
-          Giải quyết bài toán "Ảo giác cấu trúc": Buộc mô hình sinh học phải tuân theo giới hạn vật lý. Quá trình này chuẩn hóa Z-Score 18 tham số đo bằng Modlamp và Biopython.
-        </p>
-        <div className="grid md:grid-cols-3 gap-6">
-          <div className="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-2xl border border-blue-200 dark:border-blue-800 shadow-sm">
-            <h4 className="font-bold text-blue-700 dark:text-blue-400 mb-3 border-b border-blue-200 dark:border-blue-700 pb-2">Độ ổn định & An toàn</h4>
-            <ul className="list-disc pl-6 text-base space-y-2 font-medium">
-              <li>Instability Index (II)</li>
-              <li>Aliphatic Index</li>
-              <li>Hemolytic Score & Boman Index</li>
-            </ul>
+      <div className="space-y-6 text-xl h-full flex flex-col justify-center">
+        <div className="grid grid-cols-1 gap-6 relative max-w-5xl mx-auto w-full">
+          {/* Vertical line through timeline */}
+          <div className="absolute left-[3.25rem] top-10 bottom-10 w-1 bg-slate-200 dark:bg-slate-700 z-0 hidden md:block"></div>
+
+          <div className="bg-white dark:bg-slate-800 p-8 rounded-3xl shadow-md border border-slate-200 dark:border-slate-700 flex flex-col md:flex-row gap-6 relative z-10 transition hover:-translate-y-1">
+            <div className="bg-blue-100 dark:bg-blue-900/80 text-blue-600 dark:text-blue-400 font-black text-3xl h-16 w-16 rounded-full flex items-center justify-center shrink-0 border-[6px] border-white dark:border-slate-900 shadow-sm mt-1">1</div>
+            <div>
+              <h3 className="font-black text-2xl text-blue-600 dark:text-blue-400 mb-2 uppercase tracking-wide">Phase 1 — Distribution Learning</h3>
+              <p className="text-lg text-slate-600 dark:text-slate-300 font-medium leading-relaxed">Mô hình sơ cấp học "Ngữ pháp Peptide" qua phân phối dữ liệu chuẩn bằng <strong>Maximum Likelihood Estimation (MLE) / Teacher Forcing (CrossEntropy)</strong>.</p>
+            </div>
           </div>
-          <div className="bg-emerald-50 dark:bg-emerald-900/20 p-6 rounded-2xl border border-emerald-200 dark:border-emerald-800 shadow-sm">
-            <h4 className="font-bold text-emerald-700 dark:text-emerald-400 mb-3 border-b border-emerald-200 dark:border-emerald-700 pb-2">Tính kỵ nước</h4>
-            <ul className="list-disc pl-6 text-base space-y-2 font-medium">
-              <li>GRAVY</li>
-              <li>Hydrophobic Moment</li>
-              <li>Hydrophobicity profile</li>
-            </ul>
+
+          <div className="bg-white dark:bg-slate-800 p-8 rounded-3xl shadow-md border border-slate-200 dark:border-slate-700 flex flex-col md:flex-row gap-6 relative z-10 transition hover:-translate-y-1">
+            <div className="bg-purple-100 dark:bg-purple-900/80 text-purple-600 dark:text-purple-400 font-black text-3xl h-16 w-16 rounded-full flex items-center justify-center shrink-0 border-[6px] border-white dark:border-slate-900 shadow-sm mt-1">2</div>
+            <div>
+              <h3 className="font-black text-2xl text-purple-600 dark:text-purple-400 mb-2 uppercase tracking-wide">Phase 2 — Realism Learning</h3>
+              <p className="text-lg text-slate-600 dark:text-slate-300 font-medium leading-relaxed">GAN bước vào đấu trường. Học "Tính thực tế, có nghĩa tự nhiên". Trừng phạt chuỗi nhảm nhí thông qua <strong>Adversarial Loss từ CNN WGAN-GP</strong>.</p>
+            </div>
           </div>
-          <div className="bg-purple-50 dark:bg-purple-900/20 p-6 rounded-2xl border border-purple-200 dark:border-purple-800 shadow-sm">
-            <h4 className="font-bold text-purple-700 dark:text-purple-400 mb-3 border-b border-purple-200 dark:border-purple-700 pb-2">Điện tích & Cấu trúc</h4>
-            <ul className="list-disc pl-6 text-base space-y-2 font-medium">
-              <li>Tổng điện tích (+/-) & pI</li>
-              <li>Aromaticity</li>
-              <li>Tỉ lệ phân nhóm Amino Acid</li>
-            </ul>
+
+          <div className="bg-white dark:bg-slate-800 p-8 rounded-3xl shadow-md border border-slate-200 dark:border-slate-700 flex flex-col md:flex-row gap-6 relative z-10 transition hover:-translate-y-1">
+            <div className="bg-emerald-100 dark:bg-emerald-900/80 text-emerald-600 dark:text-emerald-400 font-black text-3xl h-16 w-16 rounded-full flex items-center justify-center shrink-0 border-[6px] border-white dark:border-slate-900 shadow-sm mt-1">3</div>
+            <div>
+              <h3 className="font-black text-2xl text-emerald-600 dark:text-emerald-400 mb-2 uppercase tracking-wide">Phase 3 — Objective Learning</h3>
+              <p className="text-lg text-slate-600 dark:text-slate-300 font-medium leading-relaxed">Tinh hoa sau cùng. <strong>Reinforcement Learning (SCST)</strong> kéo phân phối đồ thị chuỗi về vị trí "Tối ưu Sinh học" ép tiêu chuẩn màng kháng khuẩn chuẩn xác nhất.</p>
+            </div>
           </div>
-        </div>
-        <div className="text-center font-bold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/10 py-3 rounded-lg border border-indigo-200 dark:border-indigo-800 border-dashed">
-          Linear Projection (WX + B) ➔ Cross-Attention Hợp Nhất Đa Chiều (1D + 3D + Lý hóa).
         </div>
       </div>
     )
   },
   {
     id: 12,
-    title: "Chiến lược Huấn luyện 3 Giai đoạn",
+    title: "11. Kết quả kiến trúc mang lại",
     content: (
-      <div className="space-y-6 text-xl">
-        <div className="grid grid-cols-1 gap-5 relative">
-          <div className="absolute left-6 top-10 bottom-10 w-1 bg-slate-200 dark:bg-slate-700 z-0 hidden md:block"></div>
-
-          <div className="bg-white dark:bg-slate-800 p-6 rounded-3xl shadow-sm border border-slate-200 dark:border-slate-700 flex flex-col md:flex-row gap-6 relative z-10">
-            <div className="bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 font-black text-2xl h-14 w-14 rounded-full flex items-center justify-center shrink-0 border-4 border-white dark:border-background-dark shadow-md">1</div>
-            <div>
-              <h3 className="font-black text-2xl text-blue-600 dark:text-blue-400 mb-2">MLE Pretraining <span className="text-base font-normal opacity-75">(20 Epochs)</span></h3>
-              <p className="text-base text-gray-600 dark:text-gray-300">Khởi động. Mô hình học phân bố thống kê trình tự cơ bản bằng Maximum Likelihood Estimation với kỹ thuật Teacher Forcing (Dùng Cross-Entropy Loss).</p>
-            </div>
+      <div className="space-y-6 flex flex-col justify-center h-full">
+        <ul className="flex flex-wrap gap-4 text-base font-bold text-slate-700 dark:text-slate-200 mb-6 bg-slate-100 dark:bg-slate-800 p-6 rounded-2xl shadow-inner border border-slate-200 dark:border-slate-700 justify-center">
+          <li className="flex items-center gap-2"><span className="material-symbols-outlined text-green-500">check_circle</span> Diversity Score ~0.65 vượt trội mọi Baseline</li>
+          <li className="flex items-center gap-2"><span className="material-symbols-outlined text-green-500">check_circle</span> Sinh học In-silico chuẩn xác</li>
+          <li className="flex items-center gap-2"><span className="material-symbols-outlined text-blue-500">speed</span> Sinh 1000 peptide &lt; 2s</li>
+          <li className="flex items-center gap-2"><span className="material-symbols-outlined text-purple-500">memory</span> VRAM Inference thu gọn ~12GB (Rất nhẹ)</li>
+        </ul>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="p-4 bg-white/50 dark:bg-slate-800/50 rounded-2xl border border-slate-200 dark:border-slate-700 text-center">
+            <h4 className="font-bold text-emerald-600 dark:text-emerald-400 mb-2">Độ ổn định (Instability Index)</h4>
+            <img src="/Peptide-Design-Lightweight-Model/instability_hist.png" alt="Instability Index" className="w-full h-auto rounded-lg mb-2 border border-slate-200 dark:border-slate-600 aspect-video object-cover" />
+            <p className="text-sm font-medium">95% tập trung vùng &lt;40 Threshold siêu bền cấu trúc.</p>
           </div>
-
-          <div className="bg-white dark:bg-slate-800 p-6 rounded-3xl shadow-sm border border-slate-200 dark:border-slate-700 flex flex-col md:flex-row gap-6 relative z-10">
-            <div className="bg-purple-100 dark:bg-purple-900/50 text-purple-600 dark:text-purple-400 font-black text-2xl h-14 w-14 rounded-full flex items-center justify-center shrink-0 border-4 border-white dark:border-background-dark shadow-md">2</div>
-            <div>
-              <h3 className="font-black text-2xl text-purple-600 dark:text-purple-400 mb-2">GAN Training <span className="text-base font-normal opacity-75">(30 Epochs)</span></h3>
-              <p className="text-base text-gray-600 dark:text-gray-300">Huấn luyện Đối kháng. GRU Generator đấu với CNN Discriminator. Sử dụng Wasserstein GAN + Gradient Penalty. Kỹ thuật <strong className="text-purple-500">Gumbel-Softmax</strong> giải quyết bài toán gradient đứt gãy do không gian rời rạc của token chữ cái.</p>
-            </div>
+          <div className="p-4 bg-white/50 dark:bg-slate-800/50 rounded-2xl border border-slate-200 dark:border-slate-700 text-center">
+            <h4 className="font-bold text-blue-600 dark:text-blue-400 mb-2">Phân bố Độc tính (Hemolytic)</h4>
+            <img src="/Peptide-Design-Lightweight-Model/hemolytic_score_hist.png" alt="Hemolytic" className="w-full h-auto rounded-lg mb-2 border border-slate-200 dark:border-slate-600 aspect-video object-cover" />
+            <p className="text-sm font-medium">Đồ thị hình chuông đẩy gọn về dải điểm an toàn tiêu diệt Bacteria.</p>
           </div>
-
-          <div className="bg-white dark:bg-slate-800 p-6 rounded-3xl shadow-sm border border-slate-200 dark:border-slate-700 flex flex-col md:flex-row gap-6 relative z-10">
-            <div className="bg-emerald-100 dark:bg-emerald-900/50 text-emerald-600 dark:text-emerald-400 font-black text-2xl h-14 w-14 rounded-full flex items-center justify-center shrink-0 border-4 border-white dark:border-background-dark shadow-md">3</div>
-            <div>
-              <h3 className="font-black text-2xl text-emerald-600 dark:text-emerald-400 mb-2">RL / SCST Fine-tuning <span className="text-base font-normal opacity-75">(15 Epochs)</span></h3>
-              <p className="text-base text-gray-600 dark:text-gray-300">Tối ưu trực tiếp đặc điểm sinh học. Dùng Self-Critical Sequence Training (Policy Gradient) để tối ưu chỉ số phi tuyến/không khả vi như Instability Index, Hemolytic Score và Thermodynamic Properties đóng vai trò như Reward.</p>
-            </div>
+          <div className="p-4 bg-white/50 dark:bg-slate-800/50 rounded-2xl border border-slate-200 dark:border-slate-700 text-center">
+            <h4 className="font-bold text-purple-600 dark:text-purple-400 mb-2">Kỵ nước xuyên màng (GRAVY)</h4>
+            <img src="/Peptide-Design-Lightweight-Model/gravy_hist.png" alt="GRAVY" className="w-full h-auto rounded-lg mb-2 border border-slate-200 dark:border-slate-600 aspect-video object-cover" />
+            <p className="text-sm font-medium">Distribution dao động hoàn hảo trong khoảng [-1.0, 0.5] lý thuyết.</p>
           </div>
         </div>
       </div>
@@ -348,97 +458,91 @@ const slidesData = [
   },
   {
     id: 13,
-    title: "Thiết lập Thực nghiệm",
+    title: "12. Đóng góp khoa học của kiến trúc",
     content: (
-      <div className="grid md:grid-cols-2 gap-10 text-xl font-medium">
-        <div className="space-y-6 bg-slate-100 dark:bg-slate-800/80 p-8 rounded-3xl border border-slate-200 dark:border-slate-700">
-          <h3 className="font-bold text-2xl text-slate-800 dark:text-slate-100 border-b-2 border-slate-200 dark:border-slate-600 pb-3 flex items-center gap-2"><span className="material-symbols-outlined text-blue-500">database</span> Cấu hình Dữ liệu</h3>
-          <ul className="list-none space-y-4 text-base">
-            <li className="flex justify-between border-b border-gray-200 dark:border-gray-700 pb-2"><span>Tổng mẫu Data:</span> <strong>~150.000 Chuỗi</strong></li>
-            <li className="flex justify-between border-b border-gray-200 dark:border-gray-700 pb-2"><span>Phân chia (Train/Val/Test):</span> <strong>80 / 10 / 10</strong></li>
-            <li className="flex flex-col mt-4">
-              <span className="text-sm opacity-70 mb-2">Tập dữ liệu nền cứng học phân phối tự nhiên:</span>
-              <div className="flex flex-wrap gap-2">
-                <span className="bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 px-3 py-1 rounded-lg">DBAASP</span>
-                <span className="bg-purple-100 dark:bg-purple-900/50 text-purple-700 dark:text-purple-300 px-3 py-1 rounded-lg">APD3</span>
-                <span className="bg-rose-100 dark:bg-rose-900/50 text-rose-700 dark:text-rose-300 px-3 py-1 rounded-lg">RNN-Hem</span>
-              </div>
-            </li>
-          </ul>
+      <div className="bg-indigo-50 dark:bg-indigo-900/10 p-10 rounded-3xl border border-indigo-200 dark:border-indigo-900/50 shadow-sm h-full flex flex-col justify-center">
+        <div className="text-center mb-10 pb-6 border-b-2 border-indigo-200 dark:border-indigo-800 max-w-3xl mx-auto">
+          <h3 className="text-3xl font-black text-indigo-700 dark:text-indigo-400 leading-snug">Chuyển hướng Đột Phá — Thiết Kế Cấu Trúc Bỏ Qua "Brute-force Compute"</h3>
         </div>
-        <div className="bg-cyan-50 dark:bg-cyan-900/10 p-8 rounded-3xl border border-cyan-200 dark:border-cyan-800">
-          <h3 className="font-bold text-2xl text-cyan-600 dark:text-cyan-400 mb-6 border-b-2 border-cyan-200 dark:border-cyan-800 pb-3 flex items-center gap-2"><span className="material-symbols-outlined">developer_board</span> Hạ tầng / Hyperparameters</h3>
-          <ul className="list-none space-y-4 text-base text-slate-800 dark:text-slate-200">
-            <li className="flex justify-between border-b border-cyan-100 dark:border-cyan-800/50 pb-2"><span>GPU:</span> <strong>Quadro RTX 6000 (24GB)</strong></li>
-            <li className="flex justify-between border-b border-cyan-100 dark:border-cyan-800/50 pb-2"><span>Framework:</span> <strong>PyTorch 2.x, PyG</strong></li>
-            <li className="flex justify-between border-b border-cyan-100 dark:border-cyan-800/50 pb-2"><span>Batch Size (Grad. Acc x4):</span> <strong>16 / 8</strong></li>
-            <li className="flex justify-between pb-2"><span>Tối ưu hóa tài nguyên:</span> <strong>AMP (Mixed Precision)</strong></li>
-          </ul>
+        <div className="grid md:grid-cols-2 gap-8 text-xl font-medium text-slate-800 dark:text-slate-200">
+          <div className="flex gap-4 p-5 bg-white/60 dark:bg-slate-800/60 rounded-2xl">
+            <span className="material-symbols-outlined text-4xl text-indigo-500">hub</span>
+            <div><strong className="block text-indigo-700 dark:text-indigo-300 mb-1">Fusion Đa Thang Đo Hoàn Mỹ</strong> 
+             Lần đầu hợp nhất cả 3 chiều: Sequence (ESM-2) + Spatial (GATv2) + Hóa Lý (Z-Score) vào Generator Token.</div>
+          </div>
+          <div className="flex gap-4 p-5 bg-white/60 dark:bg-slate-800/60 rounded-2xl">
+            <span className="material-symbols-outlined text-4xl text-emerald-500">route</span>
+            <div><strong className="block text-emerald-700 dark:text-emerald-300 mb-1">Pipeline Training Xuyên Chéo Chuỗi</strong> 
+             Giải quyết mượt mà đứt gãy không gian rời rạc qua quy trình Loss 3 pha MLE &rarr; GAN (Gumbel-Softmax) &rarr; SCST Reward.</div>
+          </div>
+          <div className="flex gap-4 p-5 bg-white/60 dark:bg-slate-800/60 rounded-2xl">
+            <span className="material-symbols-outlined text-4xl text-blue-500">memory</span>
+            <div><strong className="block text-blue-700 dark:text-blue-300 mb-1">Resource-Efficient Design</strong> 
+             Nâng cao hiệu suất bằng hàng loạt Trick: Layer Freeze Backbone, GAT Attention Cα động. Ít thông số nhưng Sức mạnh cực đại.</div>
+          </div>
+          <div className="flex gap-4 p-5 bg-white/60 dark:bg-slate-800/60 rounded-2xl">
+            <span className="material-symbols-outlined text-4xl text-rose-500">public</span>
+            <div><strong className="block text-rose-700 dark:text-rose-300 mb-1">Dân Chủ Hóa (Democratization) AI Lab</strong> 
+             Mở ra khả năng nghiên cứu in-silico tốc độ siêu bão cho các tổ chức khoa học, môi trường ĐH Y-Dược hạn chế tài nguyên Khủng ở VN.</div>
+          </div>
         </div>
       </div>
     )
   },
   {
     id: 14,
-    title: "Kết quả Thực nghiệm: Cấu trúc & Hóa-Lý",
+    title: "13. Hạn chế kiến trúc",
     content: (
-      <div className="space-y-6 pb-4">
-        <p className="text-xl font-medium text-slate-700 dark:text-slate-300 mb-6">
-          Pha Reinforcement Learning đã định hướng hoàn hảo phân bố thống kê của peptide, bảo đảm tính ổn định và an toàn in-silico:
-        </p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="p-4 bg-white/50 dark:bg-slate-800/50 rounded-2xl border border-slate-200 dark:border-slate-700 text-center">
-            <h4 className="font-bold text-emerald-600 dark:text-emerald-400 mb-2">Độ ổn định (Instability Index)</h4>
-            <img src="/Peptide-Design-Lightweight-Model/instability_hist.png" alt="Instability Index" className="w-full h-auto rounded-lg mb-2 border border-slate-200 dark:border-slate-600 aspect-video object-cover" />
-            <p className="text-sm font-medium">Đa số tập trung &lt; 40 (Ngưỡng bền vững), phản ánh sinh học thực tế.</p>
-          </div>
-
-          <div className="p-4 bg-white/50 dark:bg-slate-800/50 rounded-2xl border border-slate-200 dark:border-slate-700 text-center">
-            <h4 className="font-bold text-blue-600 dark:text-blue-400 mb-2">Độc tính (Hemolytic Score)</h4>
-            <img src="/Peptide-Design-Lightweight-Model/hemolytic_score_hist.png" alt="Hemolytic" className="w-full h-auto rounded-lg mb-2 border border-slate-200 dark:border-slate-600 aspect-video object-cover" />
-            <p className="text-sm font-medium">Tập trung vùng điểm số an toàn (2.5 - 3.5) với xác suất AMP cao.</p>
-          </div>
-
-          <div className="p-4 bg-white/50 dark:bg-slate-800/50 rounded-2xl border border-slate-200 dark:border-slate-700 text-center">
-            <h4 className="font-bold text-purple-600 dark:text-purple-400 mb-2">Kỵ nước (GRAVY)</h4>
-            <img src="/Peptide-Design-Lightweight-Model/gravy_hist.png" alt="GRAVY Distribution" className="w-full h-auto rounded-lg mb-2 border border-slate-200 dark:border-slate-600 aspect-video object-cover" />
-            <p className="text-sm font-medium">Phân bố [-1.0, 0.5] cực chuẩn của AMP tự nhiên xuyên màng.</p>
-          </div>
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 h-full items-center">
+        <div className="p-8 bg-slate-100 dark:bg-slate-800 text-center rounded-3xl border border-slate-200 dark:border-slate-700 h-[280px] flex flex-col items-center justify-center hover:shadow-lg transition">
+          <span className="material-symbols-outlined text-5xl text-slate-400 mb-4">view_in_ar</span>
+          <h4 className="font-bold text-slate-800 dark:text-slate-100 text-lg mb-2">GATv2 tĩnh & Thiếu Động Lực Học</h4>
+          <p className="text-sm font-medium text-slate-500 dark:text-slate-400">Đồ thị chỉ xấp xỉ liên kết tĩnh, không mô phỏng biến thiên quỹ đạo thời gian thật - Molecular Dynamics Simulation.</p>
+        </div>
+        <div className="p-8 bg-slate-100 dark:bg-slate-800 text-center rounded-3xl border border-slate-200 dark:border-slate-700 h-[280px] flex flex-col items-center justify-center hover:shadow-lg transition">
+          <span className="material-symbols-outlined text-5xl text-slate-400 mb-4">function</span>
+          <h4 className="font-bold text-slate-800 dark:text-slate-100 text-lg mb-2">Reward vẫn là Proxy</h4>
+          <p className="text-sm font-medium text-slate-500 dark:text-slate-400">Các phần thưởng Instability hay GRAVY là suy diễn toán học in-silico, chưa gắn với chỉ số lâm sàng MIC hay IC50 trực tiếp.</p>
+        </div>
+        <div className="p-8 bg-slate-100 dark:bg-slate-800 text-center rounded-3xl border border-slate-200 dark:border-slate-700 h-[280px] flex flex-col items-center justify-center hover:shadow-lg transition">
+          <span className="material-symbols-outlined text-5xl text-slate-400 mb-4">layers</span>
+          <h4 className="font-bold text-slate-800 dark:text-slate-100 text-lg mb-2">Thiếu Folding Runtime</h4>
+          <p className="text-sm font-medium text-slate-500 dark:text-slate-400">Module tạo sinh chạy chưa nhúng thuật toán PDB 3D Fold check trực tiếp vào trong Network Loss trong lúc Train.</p>
+        </div>
+        <div className="p-8 bg-slate-100 dark:bg-slate-800 text-center rounded-3xl border border-slate-200 dark:border-slate-700 h-[280px] flex flex-col items-center justify-center hover:shadow-lg transition">
+          <span className="material-symbols-outlined text-5xl text-slate-400 mb-4">database</span>
+          <h4 className="font-bold text-slate-800 dark:text-slate-100 text-lg mb-2">Data Bias Base-Models</h4>
+          <p className="text-sm font-medium text-slate-500 dark:text-slate-400">Quá mạnh trên khu vực AMP Data của DBAASP, nhưng có thể sinh lạc lối đối với dữ liệu Protein miễn dịch đặc dạng khác.</p>
         </div>
       </div>
     )
   },
   {
     id: 15,
-    title: "Đánh giá Mức độ Đa dạng",
+    title: "14. Hướng phát triển kiến trúc",
     content: (
-      <div className="space-y-8 text-xl">
-        <h3 className="font-bold text-2xl text-slate-800 dark:text-slate-200 mb-4 border-l-4 border-indigo-500 pl-4">Khắc phục 100% rủi ro Mode Collapse</h3>
-
-        <div className="grid md:grid-cols-2 gap-8">
-          <ul className="list-none space-y-6">
-            <li className="bg-slate-100 dark:bg-slate-800 p-5 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 flex justify-between items-center">
-              <span className="font-semibold text-slate-700 dark:text-slate-300">Uniqueness Ratio:</span>
-              <strong className="text-2xl text-emerald-600 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-900/30 px-4 py-1 rounded-xl">1.0 (100%)</strong>
-            </li>
-            <li className="bg-slate-100 dark:bg-slate-800 p-5 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 flex justify-between items-center">
-              <span className="font-semibold text-slate-700 dark:text-slate-300">Diversity Score tổng hợp:</span>
-              <strong className="text-2xl text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-900/30 px-4 py-1 rounded-xl">0.65</strong>
-            </li>
-            <li className="bg-slate-100 dark:bg-slate-800 p-5 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 flex justify-between items-center">
-              <span className="font-semibold text-slate-700 dark:text-slate-300">Entropy Chuỗi:</span>
-              <strong className="text-2xl text-purple-600 dark:text-purple-400 bg-purple-100 dark:bg-purple-900/30 px-4 py-1 rounded-xl">2.892</strong>
-            </li>
-          </ul>
-
-          <div className="bg-amber-50 dark:bg-amber-900/10 p-6 rounded-2xl border border-amber-200 dark:border-amber-800 flex flex-col justify-center shadow-sm">
-            <h4 className="font-bold text-amber-700 dark:text-amber-400 mb-4 flex items-center gap-2"><span className="material-symbols-outlined">emoji_events</span> So sánh BaseLine (N-Gram)</h4>
-            <p className="text-base font-medium text-slate-700 dark:text-slate-300 mb-4">
-              <strong>LightweightPeptideGen</strong> đạt Bigram Diversity <strong className="text-amber-600 dark:text-amber-400">0.037</strong> so với ~0.016 của các baseline khủng như ESM2Gen hay Pep-Graphormer.
-            </p>
-            <p className="text-sm font-medium text-slate-600 dark:text-slate-400">
-              Trigram đạt 0.84, mô hình tái tạo được phần lớn "ngữ pháp sinh học" N-mer của AMP tự nhiên nhờ Nucleus Sampling (Top-p 0.9) và Entropy Regularization.
-            </p>
+      <div className="flex flex-col justify-center h-full">
+        <h3 className="text-2xl font-black text-emerald-600 dark:text-emerald-400 mb-8 max-w-4xl text-center mx-auto uppercase tracking-wide">Tương Lai Tiến Trình Thiết Kế Ai Peptide</h3>
+        <div className="max-w-4xl mx-auto w-full space-y-4">
+          <div className="bg-white/60 dark:bg-slate-800/60 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 flex gap-4 items-center">
+             <div className="bg-emerald-500 p-2 rounded-xl text-white flex shrink-0"><span className="material-symbols-outlined font-bold">account_tree</span></div>
+             <p className="text-lg font-bold text-slate-700 dark:text-slate-200">Tích hợp AlphaFold3 / ESMFold Runtime làm Reward Function thời gian thực.</p>
+          </div>
+          <div className="bg-white/60 dark:bg-slate-800/60 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 flex gap-4 items-center">
+             <div className="bg-emerald-500 p-2 rounded-xl text-white flex shrink-0"><span className="material-symbols-outlined font-bold">rocket_launch</span></div>
+             <p className="text-lg font-bold text-slate-700 dark:text-slate-200">Pareto RL đa mục tiêu: Sinh chuỗi cực bền đồng thời Cực ít độc tố cho mô người.</p>
+          </div>
+          <div className="bg-white/60 dark:bg-slate-800/60 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 flex gap-4 items-center">
+             <div className="bg-emerald-500 p-2 rounded-xl text-white flex shrink-0"><span className="material-symbols-outlined font-bold">water_drop</span></div>
+             <p className="text-lg font-bold text-slate-700 dark:text-slate-200">Diffusion Model Layer: Ứng dụng mô hình khuếch tán để Refine Noise Cα Structure.</p>
+          </div>
+          <div className="bg-white/60 dark:bg-slate-800/60 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 flex gap-4 items-center">
+             <div className="bg-emerald-500 p-2 rounded-xl text-white flex shrink-0"><span className="material-symbols-outlined font-bold">science</span></div>
+             <p className="text-lg font-bold text-slate-700 dark:text-slate-200">Wet-lab Verification: Feedback loop giữa AI & Máy thử nghiệm lâm sàng thực tiễn sinh học ướt.</p>
+          </div>
+          <div className="bg-white/60 dark:bg-slate-800/60 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 flex gap-4 items-center shadow-md">
+             <div className="bg-blue-600 p-2 rounded-xl text-white flex shrink-0"><span className="material-symbols-outlined font-bold">language</span></div>
+             <p className="text-lg font-bold text-blue-800 dark:text-blue-300">Hoàn thiện mô hình Web SaaS (Software as a Service) phục vụ toàn cầu.</p>
           </div>
         </div>
       </div>
@@ -446,187 +550,24 @@ const slidesData = [
   },
   {
     id: 16,
-    title: "Độ phức tạp Đo lường Tính toán",
+    title: "",
     content: (
-      <div className="grid md:grid-cols-2 gap-10 text-xl">
-        <div className="space-y-6 bg-white/50 dark:bg-slate-800/50 p-8 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-sm relative overflow-hidden">
-          <div className="absolute right-0 top-0 text-9xl text-slate-200 dark:text-slate-700/50 opacity-20 pointer-events-none material-symbols-outlined">memory</div>
-          <h3 className="font-bold text-3xl border-b-2 border-slate-200 dark:border-slate-700 pb-4 relative z-10 text-slate-800 dark:text-slate-100">VRAM Usage</h3>
-          <ul className="list-disc pl-8 space-y-6 relative z-10 font-medium">
-            <li><strong>Môi trường Training:</strong> Vận hành trơn tru ở mức <span className="text-rose-500 font-bold">18 - 22 GB</span>. Không gặp lỗi tràn bộ nhớ (OOM).</li>
-            <li><strong>Môi trường Inference:</strong> Bộ nhớ tiêu thụ thu hẹp chỉ còn <span className="text-emerald-500 font-bold">~12 GB</span> phù hợp Card độ hoạ laptop tầm trung.</li>
-          </ul>
-        </div>
-        <div className="bg-cyan-50 dark:bg-cyan-900/10 p-8 rounded-3xl border border-cyan-200 dark:border-cyan-800 shadow-sm flex flex-col justify-center">
-          <h3 className="font-bold text-2xl text-cyan-700 dark:text-cyan-400 mb-6">Tối ưu Trade-off (Đánh đổi)</h3>
-          <p className="font-medium text-slate-700 dark:text-slate-300 leading-relaxed mb-4">
-            Các mô hình khác sử dụng hàng Tỉ tham số đánh đổi hiệu năng xử lí. Bằng thiết kế <strong>Selective Freezing</strong>, <strong>Gradient Checkpointing</strong> và <strong>Mixed Precision</strong>:
-          </p>
-          <div className="p-4 bg-white/70 dark:bg-slate-900/60 rounded-xl font-bold flex flex-col gap-2 text-center border dashed border-cyan-300 dark:border-cyan-700">
-            <span className="text-indigo-600 dark:text-indigo-400">Khối lượng tham số Nhỏ</span>
-            <span className="material-symbols-outlined text-center rotate-90 text-slate-400">sync_alt</span>
-            <span className="text-emerald-600 dark:text-emerald-400">Tốc độ sinh 1000 Peptide &lt; 2 Giây</span>
-          </div>
-        </div>
-      </div>
-    )
-  },
-  {
-    id: 17,
-    title: "Hạn chế của nghiên cứu",
-    content: (
-      <div className="bg-red-50 dark:bg-red-900/10 p-10 rounded-3xl border border-red-200 dark:border-red-900 shadow-sm">
-        <div className="text-center font-bold text-red-500 dark:text-red-400 mb-8 max-w-2xl mx-auto">
-          Mặc dù mô hình mang lại tiềm năng to lớn ở không gian "In-silico" (Mô phỏng bằng Máy tính), bài nghiên cứu cũng nhận diện những mặt giới hạn hiển nhiên.
-        </div>
-        <ul className="space-y-6 text-xl text-slate-800 dark:text-slate-200 font-medium">
-          <li className="flex gap-4 items-center bg-white/60 dark:bg-slate-800/60 p-5 rounded-2xl border border-red-100 dark:border-red-900/50">
-            <span className="material-symbols-outlined text-4xl text-red-500 shrink-0">biotech</span>
-            <div>
-              <strong className="block text-red-700 dark:text-red-400 mb-1">Chưa có xác nhận Thực nghiệm Ướt (Wet lab):</strong>
-              Mô hình chỉ được tối ưu bằng các chỉ số lý thuyết, thiếu báo cáo lâm sàng thử trên vi khuẩn thật.
-            </div>
-          </li>
-          <li className="flex gap-4 items-center bg-white/60 dark:bg-slate-800/60 p-5 rounded-2xl border border-red-100 dark:border-red-900/50">
-            <span className="material-symbols-outlined text-4xl text-red-500 shrink-0">view_in_ar</span>
-            <div>
-              <strong className="block text-red-700 dark:text-red-400 mb-1">Thiếu kiểm định động lực học phân tử cấu trúc 3D đầy đủ:</strong>
-              GATv2 chỉ xấp xỉ liên kết tĩnh, không phản ánh năng lượng tự do động (Molecular Dynamics).
-            </div>
-          </li>
-          <li className="flex gap-4 items-center bg-white/60 dark:bg-slate-800/60 p-5 rounded-2xl border border-red-100 dark:border-red-900/50">
-            <span className="material-symbols-outlined text-4xl text-red-500 shrink-0">warning</span>
-            <div>
-              <strong className="block text-red-700 dark:text-red-400 mb-1">Phụ thuộc Data Bias:</strong>
-              Chất lượng đầu ra mang âm hưởng của bộ APD3 và DBAASP.
-            </div>
-          </li>
-        </ul>
-      </div>
-    )
-  },
-  {
-    id: 18,
-    title: "Hướng phát triển",
-    content: (
-      <div className="space-y-8 text-xl">
-        <h3 className="font-bold text-2xl text-amber-600 dark:text-amber-400 mb-2 border-b-2 border-amber-200 dark:border-amber-800 pb-2">Hướng đi tiếp theo</h3>
-        <ul className="list-disc pl-6 space-y-5 font-medium text-slate-800 dark:text-slate-200 text-lg">
-          <li><strong className="text-emerald-600 dark:text-emerald-400">Tích hợp AlphaFold/ESMFold Runtime:</strong> Ghép mô hình dự đoán cấu trúc trực tiếp vào Loss Function để Reward mô hình chuẩn 3D thời gian thực.</li>
-          <li>Phát triển Multi-objective optimization RL tối ưu sinh học.</li>
-          <li>Xây dựng Hệ sinh thái Web Application SaaS phục vụ giáo dục / y tế.</li>
-        </ul>
-      </div>
-    )
-  },
-  {
-    id: 19,
-    title: "Đóng góp khoa học",
-    content: (
-      <div className="bg-blue-50 dark:bg-blue-900/10 p-10 rounded-3xl border border-blue-200 dark:border-blue-900 shadow-sm h-full flex flex-col justify-center">
-        <div className="text-center mb-8 bg-white/60 dark:bg-slate-800/60 p-4 rounded-2xl border border-blue-100 dark:border-blue-900 font-bold text-blue-900 dark:text-blue-200 text-xl">
-          Thành quả mang lại ý nghĩa to lớn, giảm phụ thuộc vào các máy chủ High Performance Computing:
-        </div>
-        <ul className="space-y-6 text-xl font-bold text-slate-800 dark:text-slate-100">
-          <li className="flex gap-4 items-center bg-white/70 dark:bg-slate-800/80 p-5 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-            <div className="bg-blue-100 dark:bg-blue-900/50 p-3 rounded-full shrink-0">
-              <span className="material-symbols-outlined text-blue-600 dark:text-blue-400 text-3xl block">memory</span>
-            </div>
-            <div>Đề xuất kiến trúc lai ghép <span className="text-blue-600 dark:text-blue-400">ESM-GATv2</span> tinh gọn nhất với khả năng cân bằng biểu diễn Không gian, Trình tự và Hóa lý.</div>
-          </li>
-          <li className="flex gap-4 items-center bg-white/70 dark:bg-slate-800/80 p-5 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-            <div className="bg-emerald-100 dark:bg-emerald-900/50 p-3 rounded-full shrink-0">
-              <span className="material-symbols-outlined text-emerald-600 dark:text-emerald-400 text-3xl block">integration_instructions</span>
-            </div>
-            <div>Xây dựng hoàn thiện <span className="text-emerald-600 dark:text-emerald-400">Pipeline Ba Pha (MLE ➔ GAN ➔ RL/SCST)</span> giải quyết triệt để gradient đứt gãy trong sinh chuỗi rời rạc.</div>
-          </li>
-          <li className="flex gap-4 items-center bg-white/70 dark:bg-slate-800/80 p-5 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-            <div className="bg-purple-100 dark:bg-purple-900/50 p-3 rounded-full shrink-0">
-              <span className="material-symbols-outlined text-purple-600 dark:text-purple-400 text-3xl block">group</span>
-            </div>
-            <div><span className="text-purple-600 dark:text-purple-400">Dân chủ hóa nền tảng:</span> Cho phép các phòng thí nghiệm nguồn lực hẹp có thể sáng tạo in-silico tốc độ cao.</div>
-          </li>
-        </ul>
-      </div>
-    )
-  },
-  {
-    id: 20,
-    title: "Tài liệu tham khảo",
-    content: (
-      <div className="bg-white/40 dark:bg-slate-800/40 p-10 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden relative">
-        <span className="material-symbols-outlined absolute top-10 right-10 text-9xl text-slate-100 dark:text-slate-700/30">auto_stories</span>
-        <ul className="list-decimal pl-8 space-y-6 text-xl font-medium text-slate-700 dark:text-slate-300 relative z-10">
-          <li className="p-3 hover:bg-slate-100 dark:hover:bg-slate-700/50 rounded-lg transition-colors border-b border-dashed border-slate-300 dark:border-slate-600">
-            Guruprasad et al. (1990) — <em className="text-primary font-bold">Correlation between stability of a protein and its dipeptide composition: a novel approach for predicting in vivo stability of a protein from its primary sequence.</em>
-          </li>
-          <li className="p-3 hover:bg-slate-100 dark:hover:bg-slate-700/50 rounded-lg transition-colors border-b border-dashed border-slate-300 dark:border-slate-600">
-            Kyte, J., & Doolittle, R. F. (1982) — <em className="text-primary font-bold">A simple method for displaying the hydropathic character of a protein.</em>
-          </li>
-          <li className="p-3 hover:bg-slate-100 dark:hover:bg-slate-700/50 rounded-lg transition-colors border-b border-dashed border-slate-300 dark:border-slate-600">
-            Lin, Z., et al. (Meta AI, 2022) — <em className="text-primary font-bold">Evolutionary-scale prediction of atomic-level protein structure with a language model (ESM-2).</em>
-          </li>
-          <li className="p-3 hover:bg-slate-100 dark:hover:bg-slate-700/50 rounded-lg transition-colors border-b border-dashed border-slate-300 dark:border-slate-600">
-            Brody, S., et al. (2021) — <em className="text-primary font-bold">How Attentive are Graph Attention Networks? (GATv2).</em>
-          </li>
-          <li className="p-3 hover:bg-slate-100 dark:hover:bg-slate-700/50 rounded-lg transition-colors">
-            Jumper, J., et al. (DeepMind, 2021) — <em className="text-primary font-bold">Highly accurate protein structure prediction with AlphaFold.</em>
-          </li>
-        </ul>
-      </div>
-    )
-  },
-  {
-    id: 21,
-    title: "Bài học kinh nghiệm",
-    content: (
-      <div className="grid md:grid-cols-2 gap-6 text-lg font-medium relative z-10 w-full">
-        <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm flex items-start gap-4 transition-transform hover:-translate-y-1 hover:shadow-md">
-          <span className="material-symbols-outlined text-indigo-500 text-4xl shrink-0 mt-1">architecture</span>
-          <div>
-            <h4 className="font-bold text-slate-800 dark:text-slate-100 mb-2">Chỉ số sinh học ≠ Đặc tính thực</h4>
-            <p className="text-sm text-slate-600 dark:text-slate-400">Mô hình dễ học mẹo để Hack chỉ số tính toán. Phải kết hợp ràng buộc hóa lý để ngăn "ảo giác sinh học".</p>
-          </div>
-        </div>
-        <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm flex items-start gap-4 transition-transform hover:-translate-y-1 hover:shadow-md">
-          <span className="material-symbols-outlined text-emerald-500 text-4xl shrink-0 mt-1">science</span>
-          <div>
-            <h4 className="font-bold text-slate-800 dark:text-slate-100 mb-2">Ablation Study (Đánh giá tách biệt)</h4>
-            <p className="text-sm text-slate-600 dark:text-slate-400">Luôn phân tích tách rời ESM-2 ra sao, GNN ra sao. Đây là nền tảng sống còn để khẳng định sức mạnh Module đề xuất.</p>
-          </div>
-        </div>
-        <div className="bg-red-50 dark:bg-red-900/10 p-6 rounded-2xl border border-red-200 dark:border-red-800 shadow-sm flex items-start gap-4 text-red-700 dark:text-red-400 hover:shadow-md transition-shadow md:col-span-2 mx-auto w-full max-w-2xl">
-          <span className="material-symbols-outlined text-red-500 text-4xl shrink-0 mt-1">warning</span>
-          <div>
-            <h4 className="font-bold mb-2">GAN Mode Collapse</h4>
-            <p className="text-sm opacity-90">Sinh chuỗi Text (Token) tuần tự trên GAN khiến Generator khó truyền Gradient. Giải thuật thay thế Gumbel-Softmax cứu vãn mô hình khỏi lặp lại vô nghĩa.</p>
-          </div>
-        </div>
-      </div>
-    )
-  },
-  {
-    id: 22,
-    title: "Kết luận",
-    content: (
-      <div className="space-y-6 text-2xl text-center font-bold mt-4">
-        <div className="max-w-4xl mx-auto mb-10 text-xl font-medium text-slate-700 dark:text-slate-300 border-b border-slate-300 dark:border-slate-600 pb-8">
-          Đề tài đã hoàn thành xuất sắc việc xây dựng và thiết lập môi trường <strong className="text-primary font-bold">LightweightPeptideGen</strong>: Giải pháp Hybrid GNN/PLM đột phá chi phí linh hoạt, mở lối cho kỉ nguyên mới tối ưu máy học cấu trúc Sinh-Hóa.
-        </div>
-        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-          <div className="p-8 bg-emerald-50 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-300 rounded-3xl border border-emerald-200 dark:border-emerald-700 shadow-sm flex items-center justify-center gap-4 transition-transform hover:scale-[1.02]">
-            <span className="material-symbols-outlined text-4xl">inventory</span>
-            Đa Dạng Hóa
-          </div>
-          <div className="p-8 bg-blue-50 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 rounded-3xl border border-blue-200 dark:border-blue-700 shadow-sm flex items-center justify-center gap-4  transition-transform hover:scale-[1.02]">
-            <span className="material-symbols-outlined text-4xl">rocket_launch</span>
-            Đột phá Chi Phí
-          </div>
-        </div>
-        <div className="p-8 mt-6 max-w-xl mx-auto bg-purple-50 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300 rounded-3xl border border-purple-200 dark:border-purple-700 shadow-sm flex items-center justify-center gap-4 transition-transform hover:scale-[1.02]">
-          <span className="material-symbols-outlined text-4xl">diversity_1</span>
-          Mở Rộng Nhiều Bài Toán Tương Lai
-        </div>
+      <div className="flex flex-col items-center justify-center h-full text-center space-y-10">
+        <h2 className="text-5xl md:text-[4rem] font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 via-blue-500 to-purple-600 pb-2 mb-2">15. DEMO SẢN PHẨM</h2>
+        <p className="text-2xl font-medium text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+          Cùng trải nghiệm khả năng sinh tạo chuỗi Peptide siêu tốc với độ tin cậy kết quả Hóa-Lý đo được trực tiếp ngay trên Giao diện Web.
+        </p>
+        <a 
+          href="/Peptide-Design-Lightweight-Model/generation"
+          className="group relative px-12 py-5 font-bold text-white rounded-full bg-slate-900 dark:bg-white dark:text-slate-900 text-2xl overflow-hidden hover:scale-105 transition-transform duration-300 shadow-2xl flex items-center justify-center gap-3"
+        >
+          <div className="absolute inset-0 w-full h-full border-[6px] border-emerald-500/30 rounded-full blur-[10px] scale-110 group-hover:blur-[20px] transition-all"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <span className="relative z-10 flex items-center gap-3">
+             Tiến hành Thử nghiệm 
+             <span className="material-symbols-outlined text-3xl transition-transform group-hover:translate-x-2">arrow_forward</span>
+          </span>
+        </a>
       </div>
     )
   }
@@ -643,6 +584,7 @@ const Documentation = () => {
 
     if (!containerRef.current) return;
     const sections = Array.from(containerRef.current.querySelectorAll('section'));
+    if (sections.length === 0) return;
 
     // Calculate the horizontal middle of the viewport
     const viewportMiddle = window.scrollY + (window.innerHeight / 2);
@@ -678,6 +620,13 @@ const Documentation = () => {
             >
               <div className={`absolute top-0 right-0 w-[500px] h-[500px] rounded-full blur-[100px] -z-10 transition-all duration-700 ${slide.id % 3 === 0 ? 'bg-blue-500/10 group-hover:bg-blue-500/20' : slide.id % 3 === 1 ? 'bg-purple-500/10 group-hover:bg-purple-500/20' : 'bg-emerald-500/10 group-hover:bg-emerald-500/20'}`}></div>
               <div className={`absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full blur-[80px] -z-10 transition-all duration-700 ${slide.id % 3 === 0 ? 'bg-emerald-500/5' : slide.id % 3 === 1 ? 'bg-blue-500/5' : 'bg-purple-500/5'}`}></div>
+              
+              {/* VLU LOGO FIX */}
+              <img
+                src="/Peptide-Design-Lightweight-Model/logovlu.png"
+                alt="Logo VLU"
+                className="absolute top-[25px] right-5 h-10 md:h-12 object-contain opacity-80 z-20 pointer-events-none"
+              />
 
               <div className="relative z-10 flex flex-col h-full w-full">
                 {slide.title && (
@@ -688,7 +637,7 @@ const Documentation = () => {
                   </div>
                 )}
                 <div className="flex-1 w-full max-w-none flex flex-col justify-center">
-                  <div className="w-full">
+                  <div className="w-full h-full flex flex-col">
                     {slide.content}
                   </div>
                 </div>
@@ -698,7 +647,7 @@ const Documentation = () => {
           ))}
         </div>
 
-        <div className="text-center pt-16 border-t border-slate-200 dark:border-slate-700 opacity-60 relative z-10 mb-8">
+        <div className="text-center pt-16 border-t border-slate-200 dark:border-slate-700 opacity-60 relative z-10 mb-8 w-full max-w-[1900px] px-8">
           <p className="text-lg font-medium tracking-wide">Đồ án Tốt nghiệp — <strong className="text-primary font-bold">Quang Mỹ Tâm</strong></p>
         </div>
       </main>
@@ -707,4 +656,3 @@ const Documentation = () => {
 };
 
 export default Documentation;
-

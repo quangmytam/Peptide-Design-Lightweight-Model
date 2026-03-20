@@ -39,24 +39,10 @@ const Evaluation = () => {
       <div className="layout-content-container flex flex-col flex-1 gap-8">
         <div className="flex flex-wrap justify-between gap-4 items-start">
           <div className="flex min-w-72 flex-col gap-2">
-            <p className="text-slate-900 dark:text-slate-50 text-4xl font-black leading-tight tracking-[-0.033em]">{t('evaluation.title')}</p>
-            <p className="text-slate-500 dark:text-slate-400 text-base font-normal leading-normal">{t('evaluation.desc')}</p>
+            {/* Header text removed */}
           </div>
         </div>
-        <div className="flex gap-3 overflow-x-auto pb-2">
-          <Button onClick={() => handleFilterClick('modelVersion')} variant="secondary" className="h-8 shrink-0">
-            <p className="text-slate-900 dark:text-slate-50 text-sm font-medium leading-normal">{t('evaluation.ver')}: {modelVersions[filters.modelVersion]}</p>
-            <span className="material-symbols-outlined text-slate-500 dark:text-slate-400">expand_more</span>
-          </Button>
-          <Button onClick={() => handleFilterClick('dataset')} variant="secondary" className="h-8 shrink-0">
-            <p className="text-slate-900 dark:text-slate-50 text-sm font-medium leading-normal">{t('evaluation.data')}: {datasets[filters.dataset]}</p>
-            <span className="material-symbols-outlined text-slate-500 dark:text-slate-400">expand_more</span>
-          </Button>
-          <Button onClick={() => handleFilterClick('date')} variant="secondary" className="h-8 shrink-0">
-            <p className="text-slate-900 dark:text-slate-50 text-sm font-medium leading-normal">{t('evaluation.date')}: {dates[filters.date]}</p>
-            <span className="material-symbols-outlined text-slate-500 dark:text-slate-400">expand_more</span>
-          </Button>
-        </div>
+        {/* Filters removed */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <MetricCard title={t('evaluation.mVal')} value="98.2%" delta="+1.5%" />
           <MetricCard title={t('evaluation.mStab')} value="0.91" delta="+0.02" />

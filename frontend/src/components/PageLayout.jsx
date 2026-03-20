@@ -1,9 +1,12 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Header from './Header';
 
 const PageLayout = () => {
+  const location = useLocation();
+  const isDashboard = location.pathname.includes('/datasets') || location.pathname.includes('/training');
+
   return (
     <div className="relative flex h-auto min-h-screen w-full flex-col">
       <Header />
@@ -17,20 +20,16 @@ const PageLayout = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="flex flex-1 justify-center px-4 py-5 sm:px-8 md:px-16 lg:px-24"
+        className={`flex flex-1 justify-center ${isDashboard ? 'px-2 md:px-4 py-2' : 'px-4 py-5 sm:px-8 md:px-16 lg:px-24'}`}
       >
-        <div className="flex w-full max-w-6xl flex-col">
-          <main className="flex-grow py-12 md:py-20">
+        <div className={`flex w-full flex-col ${isDashboard ? 'max-w-full' : 'max-w-6xl'}`}>
+          <main className={`flex-grow ${isDashboard ? 'py-4' : 'py-12 md:py-20'}`}>
             <Outlet />
           </main>
           {/* Footer */}
           <footer className="mt-auto border-t border-slate-900/10 pt-8 pb-4 dark:border-slate-50/10">
-            <div className="flex flex-col items-center justify-between gap-4 text-sm text-slate-500 dark:text-slate-400 sm:flex-row">
-              <p>© 2024 AI Lab, University of Science. All rights reserved.</p>
-              <div className="flex items-center gap-4">
-                <a className="hover:text-primary" href="#">Contact</a>
-                <a className="hover:text-primary" href="#">Privacy Policy</a>
-              </div>
+            <div className="flex flex-col items-center justify-center gap-4 text-sm text-slate-500 dark:text-slate-400">
+              <p className="text-center w-full">© 2026 Quang My Tam, AI-VLTech.</p>
             </div>
           </footer>
         </div>

@@ -50,10 +50,6 @@ const Generation = () => {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 w-full">
         {/* Left Column: Control Panel */}
         <aside className="lg:col-span-4 xl:col-span-3 flex flex-col gap-8">
-          <div className="flex flex-col gap-2">
-            <h1 className="text-4xl font-black tracking-[-0.033em]">{t('generation.title')}</h1>
-            <p className="text-base font-normal leading-normal text-subtext-light dark:text-subtext-dark">{t('generation.desc')}</p>
-          </div>
           <div className="space-y-6">
             <h2 className="text-xl font-bold tracking-[-0.015em] border-b border-border-light dark:border-border-dark pb-3">{t('generation.paramTitle')}</h2>
 
